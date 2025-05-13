@@ -78,7 +78,6 @@
 
 /* Secondary navigation - matching your HTML structure */
 .section.nav-secondary {
-  background-color: #f8f8f8;
   padding: 8px 0;
   font-size: 14px;
 }
@@ -104,10 +103,6 @@
 }
 
 /* Main navigation menu - exactly as in your HTML */
-.section.nav-main {
-  background-color: white;
-  border-top: 1px solid #eaeaea;
-}
 
 .section.nav-main .default-content-wrapper ul {
   display: flex;
@@ -137,7 +132,7 @@
 .section.nav-main .default-content-wrapper ul li.nav-drop ul {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 50%;
   left: 0;
   background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -193,17 +188,16 @@
 
 /* Layout for the modern look in the image */
 /* "Schedule Now" button - this will be added to the header via JavaScript or additional HTML */
-.schedule-now-button {
+.section.nav-secondary .default-content-wrapper ul li:last-child {
   background-color: #b30838; /* OU Health red */
-  color: white;
   padding: 12px 24px;
   font-weight: bold;
   text-transform: uppercase;
   border: none;
-  position: absolute;
-  right: 0;
-  top: 20px;
-  cursor: pointer;
+}
+.section.nav-secondary .default-content-wrapper ul li:last-child a {
+  color: white;
+  text-decoration: none;
 }
 
 /* Media queries for responsive design - tailored to your HTML structure */
@@ -250,7 +244,6 @@
     position: static;
     box-shadow: none;
     width: 100%;
-    background-color: #f8f8f8;
   }
   
   .section.nav-main .default-content-wrapper > ul > li {
