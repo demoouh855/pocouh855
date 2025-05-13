@@ -1,299 +1,273 @@
-/* header and nav layout */
-header .nav-wrapper {
-  background-color: var(--background-color);
+/* Header wrapper - matches your original HTML structure */
+.header-wrapper {
   width: 100%;
-  z-index: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+/* Header block */
+.header.block {
+  background-color: white;
+}
+
+/* Nav wrapper */
+.nav-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
 }
 
-header nav {
-  box-sizing: border-box;
-  display: grid;
-  grid-template:
-    'hamburger brand tools' var(--nav-height)
-    'main main main' 1fr / auto 1fr auto;
-  align-items: center;
-  gap: 0 24px;
-  margin: auto;
-  max-width: 1248px;
-  height: var(--nav-height);
-  padding: 0 24px;
-  font-family: var(--body-font-family);
-}
-
-header nav[aria-expanded='true'] {
-  grid-template:
-    'hamburger brand' var(--nav-height)
-    'main main' 1fr
-    'tools tools' var(--nav-height) / auto 1fr;
-  overflow-y: auto;
-  min-height: 100dvh;
-}
-
-@media (width >= 900px) {
-  header nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 0 32px;
-    max-width: 1264px;
-    padding: 0 32px;
-  }
-
-  header nav[aria-expanded='true'] {
-    min-height: 0;
-    overflow: visible;
-  }
-}
-
-header nav p {
-  margin: 0;
-  line-height: 1;
-}
-
-header nav a:any-link {
-  color: currentcolor;
-}
-
-/* hamburger */
-header nav .nav-hamburger {
-  grid-area: hamburger;
-  height: 22px;
+/* Main navigation - targeting the exact ID from your HTML */
+#nav {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
-/* ... hamburger button/icon code unchanged ... */
-
-/* brand */
-header .nav-brand {
-  grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
-  line-height: 1;
+/* Navigation hamburger button - from your HTML */
+.nav-hamburger {
+  display: none; /* Hidden by default, shown on mobile */
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 100;
 }
 
-header nav .nav-brand img {
-  width: 128px;
-  height: auto;
+.nav-hamburger button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* main nav */
-header nav .nav-main,
-header nav .nav-secondary {
-  grid-area: main;
-  flex: 1 1 auto;
-  display: none;
-  visibility: hidden;
-}
-
-header nav[aria-expanded='true'] .nav-main,
-header nav[aria-expanded='true'] .nav-secondary {
+.nav-hamburger-icon {
   display: block;
-  visibility: visible;
-  align-self: start;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  position: relative;
 }
 
-header nav .nav-main ul,
-header nav .nav-secondary ul {
-  list-style: none;
-  padding-left: 0;
-  font-size: var(--body-font-size-s);
-}
-
-header nav .nav-main ul > li,
-header nav .nav-secondary ul > li  {
-  font-weight: 500;
-}
-
-header nav .nav-main ul > li > ul,
-header nav .nav-secondary ul > li > ul {
-  margin-top: 0;
-}
-
-header nav .nav-main ul > li > ul > li {
-  font-weight: 400;
-}
-
-@media (width >= 900px) {
-  header nav .nav-main,
-  header nav .nav-secondary {
-    display: block;
-    visibility: visible;
-    white-space: nowrap;
-  }
-
-  header nav[aria-expanded='true'] .nav-main {
-    align-self: unset;
-  }
-
-  header nav .nav-main .nav-drop {
-    position: relative;
-    padding-right: 16px;
-    cursor: pointer;
-  }
-
-  header nav .nav-main .nav-drop::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0.5em;
-    right: 2px;
-    transform: rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
-  }
-
-  header nav .nav-main .nav-drop[aria-expanded='true']::after {
-    top: unset;
-    bottom: 0.5em;
-    transform: rotate(315deg);
-  }
-
-  header nav .nav-main ul {
-    display: flex;
-    gap: 24px;
-    margin: 0;
-  }
-
-  header nav .nav-main .default-content-wrapper > ul > li {
-    flex: 0 1 auto;
-    position: relative;
-  }
-
-  header nav .nav-main .default-content-wrapper > ul > li > ul {
-    display: none;
-    position: relative;
-  }
-
-  header nav .nav-main .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-    display: block;
-    position: absolute;
-    left: -24px;
-    width: 200px;
-    top: 150%;
-    padding: 16px;
-    background-color: var(--light-color);
-    white-space: initial;
-  }
-
-  header nav .nav-main .default-content-wrapper > ul > li > ul::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 16px;
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--light-color);
-  }
-
-  header nav .nav-main .default-content-wrapper > ul > li > ul > li {
-    padding: 8px 0;
-  }
-}
-
-/* tools */
-header nav .nav-tools {
-  grid-area: tools;
-}
-
-/* Ensure .nav-secondary and .nav-main stack vertically */
-header .nav-secondary,
-header .nav-main {
-  display: block; /* Stack vertically */
-  width: 100%; /* Full width */
-  box-sizing: border-box;
-  margin: 0; /* Remove default margin */
-  padding: 16px 24px; /* Add padding for spacing */
-  background: var(--background-color, #fff); /* Optional background color */
-  border-bottom: 1px solid var(--highlight-border, #eee); /* Add a separator */
-}
-
-/* Shared child styles for .nav-secondary and .nav-main */
-header .nav-secondary ul,
-header .nav-main ul {
-  list-style: none; /* Remove bullet points */
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap; /* Allow wrapping if needed */
-  gap: 16px; /* Add spacing between items */
-  justify-content: flex-start; /* Align items to the left */
-}
-
-header .nav-secondary ul li,
-header .nav-main ul li {
-  font-weight: 500; /* Adjust font weight */
-}
-
-header .nav-secondary a,
-header .nav-main a {
-  color: var(--nav-link-color, #222); /* Link color */
-  text-decoration: none; /* Remove underline */
-  transition: color 0.2s; /* Smooth hover effect */
-}
-
-header .nav-secondary a:hover,
-header .nav-main a:hover,
-header .nav-secondary a:focus,
-header .nav-main a:focus {
-  color: var(--primary-color, #0066cc); /* Hover/focus color */
-  text-decoration: underline; /* Add underline on hover/focus */
-}
-
-/* Optional: Add a separator for nav-secondary items */
-header .nav-secondary ul li:not(:last-child)::after,
-header .nav-main ul li:not(:last-child)::after {
-  content: '·'; /* Separator character */
-  color: #888;
-  margin: 0 8px;
-  font-weight: 400;
-}
-
-/* Remove separator for the last item */
-header .nav-secondary ul li:last-child::after,
-header .nav-main ul li:last-child::after {
+.nav-hamburger-icon::before,
+.nav-hamburger-icon::after {
   content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  position: absolute;
 }
 
-/* Responsive adjustments for mobile */
-@media (max-width: 899px) {
-  header .nav-secondary,
-  header .nav-main {
-    padding: 16px; /* Adjust padding for smaller screens */
-  }
+.nav-hamburger-icon::before {
+  top: -8px;
+}
 
-  header .nav-secondary ul,
-  header .nav-main ul {
-    flex-direction: column; /* Stack items vertically */
-    gap: 12px; /* Adjust spacing between items */
+.nav-hamburger-icon::after {
+  bottom: -8px;
+}
+
+/* Brand section - targeting your exact class names */
+.section.nav-brand {
+  padding: 20px 0;
+}
+
+.section.nav-brand .default-content-wrapper h1 {
+  color: #b30838; /* OU Health red */
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Secondary navigation - matching your HTML structure */
+.section.nav-secondary {
+  background-color: #f8f8f8;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.section.nav-secondary .default-content-wrapper ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  align-items: center;
+}
+
+.section.nav-secondary .default-content-wrapper ul li {
+  margin-left: 20px;
+}
+
+.section.nav-secondary .default-content-wrapper ul li a {
+  color: #4a4a4a;
+  text-decoration: none;
+}
+
+.section.nav-secondary .default-content-wrapper ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main navigation menu - exactly as in your HTML */
+.section.nav-main {
+  background-color: white;
+  border-top: 1px solid #eaeaea;
+}
+
+.section.nav-main .default-content-wrapper ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  position: relative;
+}
+
+.section.nav-main .default-content-wrapper > ul > li {
+  position: relative;
+  padding: 15px 10px;
+}
+
+.section.nav-main .default-content-wrapper > ul > li > a {
+  color: #00305d; /* OU Health blue */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.section.nav-main .default-content-wrapper > ul > li:hover > a {
+  color: #b30838; /* OU Health red */
+}
+
+/* Dropdown menus - targeting the .nav-drop class from your HTML */
+.section.nav-main .default-content-wrapper ul li.nav-drop ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 250px;
+  flex-direction: column;
+}
+
+.section.nav-main .default-content-wrapper ul li.nav-drop[aria-expanded="true"] ul,
+.section.nav-main .default-content-wrapper ul li.nav-drop:hover ul {
+  display: block;
+}
+
+.section.nav-main .default-content-wrapper ul ul li {
+  padding: 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.section.nav-main .default-content-wrapper ul ul li a {
+  color: #4a4a4a;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
+  white-space: nowrap;
+}
+
+.section.nav-main .default-content-wrapper ul ul li a:hover {
+  color: #b30838; /* OU Health red */
+  background-color: #f8f8f8;
+}
+
+/* Search icon - specifically targeting the structure in your HTML */
+.section.nav-main .default-content-wrapper p {
+  margin: 0;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.icon.icon-search {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon.icon-search img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Navigation tools section */
+.section.nav-tools {
+  padding: 10px 0;
+}
+
+/* Layout for the modern look in the image */
+/* "Schedule Now" button - this will be added to the header via JavaScript or additional HTML */
+.schedule-now-button {
+  background-color: #b30838; /* OU Health red */
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  cursor: pointer;
+}
+
+/* Media queries for responsive design - tailored to your HTML structure */
+@media (max-width: 992px) {
+  .section.nav-secondary .default-content-wrapper ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul {
+    flex-wrap: wrap;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul > li {
+    padding: 10px;
   }
 }
 
-/* Responsive adjustments for desktop */
-@media (min-width: 900px) {
-  header .nav-secondary,
-  header .nav-main {
-    padding: 16px 32px; /* Adjust padding for larger screens */
+@media (max-width: 768px) {
+  .nav-hamburger {
+    display: block;
   }
-
-  header .nav-secondary ul,
-  header .nav-main ul {
-    flex-direction: row; /* Align items horizontally */
-    gap: 24px; /* Adjust spacing between items */
+  
+  #nav[aria-expanded="false"] .section.nav-main,
+  #nav[aria-expanded="false"] .section.nav-secondary {
+    display: none;
+  }
+  
+  .section.nav-main .default-content-wrapper ul {
+    flex-direction: column;
+  }
+  
+  .section.nav-secondary .default-content-wrapper ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .section.nav-secondary .default-content-wrapper ul li {
+    margin: 5px 0;
+    width: 100%;
+  }
+  
+  .section.nav-main .default-content-wrapper ul ul {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+    background-color: #f8f8f8;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul > li {
+    width: 100%;
+    border-bottom: 1px solid #eaeaea;
   }
 }
 
-header .nav-main {
-  box-shadow: 0 1px 0 #eaeaea;
+.section-nav-bar a {
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
 }
 
-/* Optional: visually emphasize split */
-header .nav-main {
-  box-shadow: 0 1px 0 #eaeaea;
+.section-nav-bar a:hover {
+  color: #b30838;
 }
