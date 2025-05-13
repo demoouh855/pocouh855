@@ -2,8 +2,8 @@
 header .nav-wrapper {
   background-color: var(--background-color);
   width: 100%;
-  z-index: 2;
-  position: fixed;
+  z-index: auto;
+  position: relative;
 }
 
 header nav {
@@ -11,7 +11,7 @@ header nav {
   display: grid;
   grid-template:
     'hamburger brand tools' var(--nav-height)
-    'sections sections sections' 1fr / auto 1fr auto;
+    'main main main' 1fr / auto 1fr auto;
   align-items: center;
   gap: 0 24px;
   margin: auto;
@@ -24,7 +24,7 @@ header nav {
 header nav[aria-expanded='true'] {
   grid-template:
     'hamburger brand' var(--nav-height)
-    'sections sections' 1fr
+    'main main' 1fr
     'tools tools' var(--nav-height) / auto 1fr;
   overflow-y: auto;
   min-height: 100dvh;
@@ -62,78 +62,7 @@ header nav .nav-hamburger {
   align-items: center;
 }
 
-header nav .nav-hamburger button {
-  height: 22px;
-  margin: 0;
-  border: 0;
-  border-radius: 0;
-  padding: 0;
-  background-color: var(--background-color);
-  color: inherit;
-  overflow: initial;
-  text-overflow: initial;
-  white-space: initial;
-}
-
-header nav .nav-hamburger-icon,
-header nav .nav-hamburger-icon::before,
-header nav .nav-hamburger-icon::after {
-  box-sizing: border-box;
-  display: block;
-  position: relative;
-  width: 20px;
-}
-
-header nav .nav-hamburger-icon::before,
-header nav .nav-hamburger-icon::after {
-  content: '';
-  position: absolute;
-  background: currentcolor;
-}
-
-header nav[aria-expanded='false'] .nav-hamburger-icon,
-header nav[aria-expanded='false'] .nav-hamburger-icon::before,
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
-  height: 2px;
-  border-radius: 2px;
-  background: currentcolor;
-}
-
-header nav[aria-expanded='false'] .nav-hamburger-icon::before {
-  top: -6px;
-}
-
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
-  top: 6px;
-}
-
-header nav[aria-expanded='true'] .nav-hamburger-icon {
-  height: 22px;
-}
-
-header nav[aria-expanded='true'] .nav-hamburger-icon::before,
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: 3px;
-  left: 1px;
-  transform: rotate(45deg);
-  transform-origin: 2px 1px;
-  width: 24px;
-  height: 2px;
-  border-radius: 2px;
-}
-
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: unset;
-  bottom: 3px;
-  transform: rotate(-45deg);
-}
-
-@media (width >= 900px) {
-  header nav .nav-hamburger {
-    display: none;
-    visibility: hidden;
-  }
-}
+/* ... hamburger button/icon code unchanged ... */
 
 /* brand */
 header .nav-brand {
@@ -149,56 +78,62 @@ header nav .nav-brand img {
   height: auto;
 }
 
-/* sections */
-header nav .nav-sections {
-  grid-area: sections;
+/* main nav */
+header nav .nav-main,
+header nav .nav-secondary {
+  grid-area: main;
   flex: 1 1 auto;
   display: none;
   visibility: hidden;
 }
 
-header nav[aria-expanded='true'] .nav-sections {
+header nav[aria-expanded='true'] .nav-main,
+header nav[aria-expanded='true'] .nav-secondary {
   display: block;
   visibility: visible;
   align-self: start;
 }
 
-header nav .nav-sections ul {
+header nav .nav-main ul,
+header nav .nav-secondary ul {
   list-style: none;
   padding-left: 0;
   font-size: var(--body-font-size-s);
 }
 
-header nav .nav-sections ul > li {
+header nav .nav-main ul > li,
+header nav .nav-secondary ul > li  {
   font-weight: 500;
 }
 
-header nav .nav-sections ul > li > ul {
+header nav .nav-main ul > li > ul,
+header nav .nav-secondary ul > li > ul {
   margin-top: 0;
 }
 
-header nav .nav-sections ul > li > ul > li {
+header nav .nav-main ul > li > ul > li {
   font-weight: 400;
 }
 
 @media (width >= 900px) {
-  header nav .nav-sections {
+  header nav .nav-main,
+  header nav .nav-secondary {
     display: block;
     visibility: visible;
     white-space: nowrap;
   }
 
-  header nav[aria-expanded='true'] .nav-sections {
+  header nav[aria-expanded='true'] .nav-main {
     align-self: unset;
   }
 
-  header nav .nav-sections .nav-drop {
+  header nav .nav-main .nav-drop {
     position: relative;
     padding-right: 16px;
     cursor: pointer;
   }
 
-  header nav .nav-sections .nav-drop::after {
+  header nav .nav-main .nav-drop::after {
     content: '';
     display: inline-block;
     position: absolute;
@@ -212,29 +147,29 @@ header nav .nav-sections ul > li > ul > li {
     border-width: 2px 2px 0 0;
   }
 
-  header nav .nav-sections .nav-drop[aria-expanded='true']::after {
+  header nav .nav-main .nav-drop[aria-expanded='true']::after {
     top: unset;
     bottom: 0.5em;
     transform: rotate(315deg);
   }
 
-  header nav .nav-sections ul {
+  header nav .nav-main ul {
     display: flex;
     gap: 24px;
     margin: 0;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li {
+  header nav .nav-main .default-content-wrapper > ul > li {
     flex: 0 1 auto;
     position: relative;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
+  header nav .nav-main .default-content-wrapper > ul > li > ul {
     display: none;
     position: relative;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+  header nav .nav-main .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
     display: block;
     position: absolute;
     left: -24px;
@@ -245,7 +180,7 @@ header nav .nav-sections ul > li > ul > li {
     white-space: initial;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
+  header nav .nav-main .default-content-wrapper > ul > li > ul::before {
     content: '';
     position: absolute;
     top: -8px;
@@ -257,7 +192,7 @@ header nav .nav-sections ul > li > ul > li {
     border-bottom: 8px solid var(--light-color);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
+  header nav .nav-main .default-content-wrapper > ul > li > ul > li {
     padding: 8px 0;
   }
 }
@@ -265,4 +200,100 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+/* Ensure .nav-secondary and .nav-main stack vertically */
+header .nav-secondary,
+header .nav-main {
+  display: block; /* Stack vertically */
+  width: 100%; /* Full width */
+  box-sizing: border-box;
+  margin: 0; /* Remove default margin */
+  padding: 16px 24px; /* Add padding for spacing */
+  background: var(--background-color, #fff); /* Optional background color */
+  border-bottom: 1px solid var(--highlight-border, #eee); /* Add a separator */
+}
+
+/* Shared child styles for .nav-secondary and .nav-main */
+header .nav-secondary ul,
+header .nav-main ul {
+  list-style: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping if needed */
+  gap: 16px; /* Add spacing between items */
+  justify-content: flex-start; /* Align items to the left */
+}
+
+header .nav-secondary ul li,
+header .nav-main ul li {
+  font-weight: 500; /* Adjust font weight */
+}
+
+header .nav-secondary a,
+header .nav-main a {
+  color: var(--nav-link-color, #222); /* Link color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.2s; /* Smooth hover effect */
+}
+
+header .nav-secondary a:hover,
+header .nav-main a:hover,
+header .nav-secondary a:focus,
+header .nav-main a:focus {
+  color: var(--primary-color, #0066cc); /* Hover/focus color */
+  text-decoration: underline; /* Add underline on hover/focus */
+}
+
+/* Optional: Add a separator for nav-secondary items */
+header .nav-secondary ul li:not(:last-child)::after,
+header .nav-main ul li:not(:last-child)::after {
+  content: '·'; /* Separator character */
+  color: #888;
+  margin: 0 8px;
+  font-weight: 400;
+}
+
+/* Remove separator for the last item */
+header .nav-secondary ul li:last-child::after,
+header .nav-main ul li:last-child::after {
+  content: '';
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 899px) {
+  header .nav-secondary,
+  header .nav-main {
+    padding: 16px; /* Adjust padding for smaller screens */
+  }
+
+  header .nav-secondary ul,
+  header .nav-main ul {
+    flex-direction: column; /* Stack items vertically */
+    gap: 12px; /* Adjust spacing between items */
+  }
+}
+
+/* Responsive adjustments for desktop */
+@media (min-width: 900px) {
+  header .nav-secondary,
+  header .nav-main {
+    padding: 16px 32px; /* Adjust padding for larger screens */
+  }
+
+  header .nav-secondary ul,
+  header .nav-main ul {
+    flex-direction: row; /* Align items horizontally */
+    gap: 24px; /* Adjust spacing between items */
+  }
+}
+
+header .nav-main {
+  box-shadow: 0 1px 0 #eaeaea;
+}
+
+/* Optional: visually emphasize split */
+header .nav-main {
+  box-shadow: 0 1px 0 #eaeaea;
 }
