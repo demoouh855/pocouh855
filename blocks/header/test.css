@@ -1,0 +1,287 @@
+/* Ohio University Health Navigation CSS - Using Original HTML Structure */
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header wrapper - matches your original HTML structure */
+.header-wrapper {
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+/* Header block */
+.header.block {
+  background-color: white;
+}
+
+/* Nav wrapper */
+.nav-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Main navigation - targeting the exact ID from your HTML */
+#nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Navigation hamburger button - from your HTML */
+.nav-hamburger {
+  display: none; /* Hidden by default, shown on mobile */
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  z-index: 100;
+}
+
+.nav-hamburger button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-hamburger-icon {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  position: relative;
+}
+
+.nav-hamburger-icon::before,
+.nav-hamburger-icon::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  position: absolute;
+}
+
+.nav-hamburger-icon::before {
+  top: -8px;
+}
+
+.nav-hamburger-icon::after {
+  bottom: -8px;
+}
+
+/* Brand section - targeting your exact class names */
+.section.nav-brand {
+  padding: 20px 0;
+}
+
+.section.nav-brand .default-content-wrapper h1 {
+  color: #b30838; /* OU Health red */
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Secondary navigation - matching your HTML structure */
+.section.nav-secondary {
+  background-color: #f8f8f8;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.section.nav-secondary .default-content-wrapper ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  align-items: center;
+}
+
+.section.nav-secondary .default-content-wrapper ul li {
+  margin-left: 20px;
+}
+
+.section.nav-secondary .default-content-wrapper ul li a {
+  color: #4a4a4a;
+  text-decoration: none;
+}
+
+.section.nav-secondary .default-content-wrapper ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main navigation menu - exactly as in your HTML */
+.section.nav-main {
+  background-color: white;
+  border-top: 1px solid #eaeaea;
+}
+
+.section.nav-main .default-content-wrapper ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  position: relative;
+}
+
+.section.nav-main .default-content-wrapper > ul > li {
+  position: relative;
+  padding: 15px 10px;
+}
+
+.section.nav-main .default-content-wrapper > ul > li > a {
+  color: #00305d; /* OU Health blue */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.section.nav-main .default-content-wrapper > ul > li:hover > a {
+  color: #b30838; /* OU Health red */
+}
+
+/* Dropdown menus - targeting the .nav-drop class from your HTML */
+.section.nav-main .default-content-wrapper ul li.nav-drop ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  min-width: 250px;
+  flex-direction: column;
+}
+
+.section.nav-main .default-content-wrapper ul li.nav-drop[aria-expanded="true"] ul,
+.section.nav-main .default-content-wrapper ul li.nav-drop:hover ul {
+  display: block;
+}
+
+.section.nav-main .default-content-wrapper ul ul li {
+  padding: 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.section.nav-main .default-content-wrapper ul ul li a {
+  color: #4a4a4a;
+  text-decoration: none;
+  display: block;
+  padding: 10px 15px;
+  white-space: nowrap;
+}
+
+.section.nav-main .default-content-wrapper ul ul li a:hover {
+  color: #b30838; /* OU Health red */
+  background-color: #f8f8f8;
+}
+
+/* Search icon - specifically targeting the structure in your HTML */
+.section.nav-main .default-content-wrapper p {
+  margin: 0;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.icon.icon-search {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.icon.icon-search img {
+  width: 16px;
+  height: 16px;
+}
+
+/* Navigation tools section */
+.section.nav-tools {
+  padding: 10px 0;
+}
+
+/* Layout for the modern look in the image */
+/* "Schedule Now" button - this will be added to the header via JavaScript or additional HTML */
+.schedule-now-button {
+  background-color: #b30838; /* OU Health red */
+  color: white;
+  padding: 12px 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 20px;
+  cursor: pointer;
+}
+
+/* Media queries for responsive design - tailored to your HTML structure */
+@media (max-width: 992px) {
+  .section.nav-secondary .default-content-wrapper ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul {
+    flex-wrap: wrap;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul > li {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-hamburger {
+    display: block;
+  }
+  
+  #nav[aria-expanded="false"] .section.nav-main,
+  #nav[aria-expanded="false"] .section.nav-secondary {
+    display: none;
+  }
+  
+  .section.nav-main .default-content-wrapper ul {
+    flex-direction: column;
+  }
+  
+  .section.nav-secondary .default-content-wrapper ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .section.nav-secondary .default-content-wrapper ul li {
+    margin: 5px 0;
+    width: 100%;
+  }
+  
+  .section.nav-main .default-content-wrapper ul ul {
+    position: static;
+    box-shadow: none;
+    width: 100%;
+    background-color: #f8f8f8;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul > li {
+    width: 100%;
+    border-bottom: 1px solid #eaeaea;
+  }
+}
+
+.section-nav-bar a {
+  color: #003366;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+}
+
+.section-nav-bar a:hover {
+  color: #b30838;
+}
