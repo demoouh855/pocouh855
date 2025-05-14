@@ -1,0 +1,27 @@
+/* Updated Logo/Brand section */
+.section.nav-brand {
+  padding: 10px 0;
+  flex: 0 0 auto;
+}
+
+.section.nav-brand img {
+  max-height: 50px; /* Reduced height to match second image */
+  width: auto;
+}
+
+/* Adjust the nav-wrapper for better positioning */
+.nav-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+/* Media query for mobile responsiveness */
+@media (max-width: 768px) {
+  .section.nav-brand img {
+    max-height: 45px;
+  }
+}
