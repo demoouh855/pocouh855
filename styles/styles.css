@@ -46,11 +46,21 @@
 --heading-font-size-xs: 15.2292px;
 --body-font-size-m: 15.2292px;
 --body-font-size-s: 14.3763px;
-
-
-
   /* nav height */
   --nav-height: auto;
+  /* from OUHealth*/
+  	--primary-color: #003b5c;
+	--secondary-color: #2b2e35;
+	--click1-color: #a90533;
+	--click2-color: #7eddd3;
+	--tertiary-color: #f2c75c;
+	--quarternary-color:#7eddd3;
+	--white-color: #FFFFFF;
+	--black-color: #000000;
+	--text-color: #58595b;
+	--off-color: #f5f5f5;
+	--gray-color: #E7E7E7;
+
   
 }
 

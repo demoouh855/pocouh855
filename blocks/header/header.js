@@ -120,6 +120,25 @@ export default async function decorate(block) {
 
     // Ensure nav-brand is properly structured
     if (navBrand) {
+        // Find <a> that wraps the <img>
+        const anchor = navBrand.querySelector('a');
+        const image = navBrand.querySelector('img');
+
+        if (anchor && image) {
+            // Use the image's alt text for accessibility
+            image.alt = image.alt || navBrand.textContent.trim();
+
+            // No change needed, the structure is already <a><img></a>
+        } else if (image) {
+            // If not already in a link, wrap image in anchor
+            const link = document.createElement('a');
+            link.href = '/'; // Set as needed or pull from a config/text cell
+            image.removeAttribute('width');
+            image.removeAttribute('height');
+            link.appendChild(image.cloneNode(true)); // Copy image with alt text
+            navBrand.innerHTML = '';
+            navBrand.appendChild(link);
+        }
         navBrand.classList.add('section', 'nav-brand');
         navBrand.classList.remove('nav-content');
         nav.prepend(navBrand);
