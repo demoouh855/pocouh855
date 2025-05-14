@@ -1,5 +1,7 @@
 /* Header wrapper - matches your original HTML structure */
 .header-wrapper {
+/* Header wrapper - matches your original HTML structure */
+.header-wrapper {
   width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   background-color: white;
@@ -15,13 +17,18 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  display: flex; /* Use flexbox for horizontal alignment */
+  align-items: center; /* Vertically align items */
+  justify-content: space-between; /* Add spacing between items */
+  flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 /* Main navigation - targeting the exact ID from your HTML */
 #nav {
   display: flex;
-  flex-direction: column;
-  width: 100%;
+  align-items: center; /* Vertically align items */
+  justify-content: space-between; /* Space between nav-brand and nav-content */
+  flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 /* Navigation hamburger button - from your HTML */
@@ -74,6 +81,19 @@
   color: #b30838; /* OU Health red */
   font-size: 28px;
   font-weight: bold;
+}
+
+/* Style for .nav-brand */
+.nav-brand {
+  flex: 0 0 auto; /* Prevent it from growing or shrinking */
+  padding: 16px; /* Add padding for spacing */
+}
+
+/* Style for .nav-content */
+.nav-content {
+  flex: 1; /* Allow it to take up remaining space */
+  display: flex;
+  flex-direction: column; /* Stack its children vertically */
 }
 
 /* Secondary navigation - matching your HTML structure */
