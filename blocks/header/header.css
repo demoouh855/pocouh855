@@ -1,6 +1,4 @@
-/* Header wrapper - matches your original HTML structure */
-.header-wrapper {
-/* Header wrapper - matches your original HTML structure */
+/* Header wrapper */
 .header-wrapper {
   width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -17,21 +15,16 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  display: flex; /* Use flexbox for horizontal alignment */
-  align-items: center; /* Vertically align items */
-  justify-content: space-between; /* Add spacing between items */
-  flex-wrap: nowrap; /* Prevent wrapping */
 }
 
-/* Main navigation - targeting the exact ID from your HTML */
+/* Main navigation */
 #nav {
   display: flex;
-  align-items: center; /* Vertically align items */
-  justify-content: space-between; /* Space between nav-brand and nav-content */
-  flex-wrap: nowrap; /* Prevent wrapping */
+  flex-direction: column;
+  width: 100%;
 }
 
-/* Navigation hamburger button - from your HTML */
+/* Navigation hamburger button */
 .nav-hamburger {
   display: none; /* Hidden by default, shown on mobile */
   position: absolute;
@@ -44,6 +37,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  padding: 10px;
 }
 
 .nav-hamburger-icon {
@@ -72,7 +66,7 @@
   bottom: -8px;
 }
 
-/* Brand section - targeting your exact class names */
+/* Brand section */
 .section.nav-brand {
   padding: 20px 0;
 }
@@ -81,25 +75,20 @@
   color: #b30838; /* OU Health red */
   font-size: 28px;
   font-weight: bold;
-}
-
-/* Style for .nav-brand */
-.nav-brand {
-  flex: 0 0 auto; /* Prevent it from growing or shrinking */
-  padding: 16px; /* Add padding for spacing */
+  margin: 0;
+  padding: 0;
 }
 
 /* Style for .nav-content */
 .nav-content {
-  flex: 1; /* Allow it to take up remaining space */
-  display: flex;
-  flex-direction: column; /* Stack its children vertically */
+  width: 100%;
 }
 
-/* Secondary navigation - matching your HTML structure */
+/* Secondary navigation */
 .section.nav-secondary {
   padding: 8px 0;
   font-size: 14px;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .section.nav-secondary .default-content-wrapper ul {
@@ -107,6 +96,8 @@
   justify-content: flex-end;
   list-style: none;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .section.nav-secondary .default-content-wrapper ul li {
@@ -122,18 +113,21 @@
   text-decoration: underline;
 }
 
-/* Main navigation menu - exactly as in your HTML */
+/* Main navigation menu */
+.section.nav-main {
+  padding: 0;
+}
 
 .section.nav-main .default-content-wrapper ul {
   display: flex;
-  justify-content: space-between;
   list-style: none;
-  position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 .section.nav-main .default-content-wrapper > ul > li {
   position: relative;
-  padding: 15px 10px;
+  padding: 15px 20px 15px 0;
 }
 
 .section.nav-main .default-content-wrapper > ul > li > a {
@@ -148,52 +142,54 @@
   color: #b30838; /* OU Health red */
 }
 
-/* Dropdown menus - targeting the .nav-drop class from your HTML */
-.section.nav-main .default-content-wrapper ul li.nav-drop ul {
+/* FIXED: Dropdown menus */
+.section.nav-main .default-content-wrapper > ul > li > ul {
   display: none;
   position: absolute;
-  top: 50%;
+  top: 100%;
   left: 0;
   background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 100;
   min-width: 250px;
   flex-direction: column;
+  padding: 5px 0;
 }
 
-.section.nav-main .default-content-wrapper ul li.nav-drop[aria-expanded="true"] ul,
-.section.nav-main .default-content-wrapper ul li.nav-drop:hover ul {
+/* Show dropdown on hover */
+.section.nav-main .default-content-wrapper > ul > li:hover > ul {
   display: block;
 }
 
-.section.nav-main .default-content-wrapper ul ul li {
+.section.nav-main .default-content-wrapper > ul > li > ul > li {
   padding: 0;
+  margin: 0;
   border-bottom: 1px solid #eaeaea;
 }
 
-.section.nav-main .default-content-wrapper ul ul li a {
+.section.nav-main .default-content-wrapper > ul > li > ul > li:last-child {
+  border-bottom: none;
+}
+
+.section.nav-main .default-content-wrapper > ul > li > ul > li > a {
   color: #4a4a4a;
   text-decoration: none;
   display: block;
   padding: 10px 15px;
   white-space: nowrap;
+  font-size: 14px;
 }
 
-.section.nav-main .default-content-wrapper ul ul li a:hover {
+.section.nav-main .default-content-wrapper > ul > li > ul > li > a:hover {
   color: #b30838; /* OU Health red */
   background-color: #f8f8f8;
 }
 
-/* Search icon - specifically targeting the structure in your HTML */
-.section.nav-main .default-content-wrapper p {
-  margin: 0;
-  padding: 15px 0;
-  cursor: pointer;
-}
-
+/* Search icon */
 .icon.icon-search {
   display: inline-block;
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .icon.icon-search img {
@@ -201,38 +197,37 @@
   height: 16px;
 }
 
-/* Navigation tools section */
-.section.nav-tools {
-  padding: 10px 0;
-}
-
-/* Layout for the modern look in the image */
-/* "Schedule Now" button - this will be added to the header via JavaScript or additional HTML */
+/* "Schedule Now" button */
 .section.nav-secondary .default-content-wrapper ul li:last-child {
   background-color: #b30838; /* OU Health red */
-  padding: 12px 24px;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
 }
+
 .section.nav-secondary .default-content-wrapper ul li:last-child a {
   color: white;
   text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
-/* Media queries for responsive design - tailored to your HTML structure */
+/* Media queries for responsive design */
 @media (max-width: 992px) {
+  .nav-wrapper {
+    padding: 0 15px;
+  }
+  
   .section.nav-secondary .default-content-wrapper ul {
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .section.nav-secondary .default-content-wrapper ul li {
+    margin: 5px 10px;
   }
   
   .section.nav-main .default-content-wrapper > ul {
     flex-wrap: wrap;
-  }
-  
-  .section.nav-main .default-content-wrapper > ul > li {
-    padding: 10px;
   }
 }
 
@@ -241,13 +236,13 @@
     display: block;
   }
   
-  #nav[aria-expanded="false"] .section.nav-main,
-  #nav[aria-expanded="false"] .section.nav-secondary {
+  .nav-content {
     display: none;
   }
   
-  .section.nav-main .default-content-wrapper ul {
-    flex-direction: column;
+  /* When menu is open */
+  #nav[aria-expanded="true"] .nav-content {
+    display: block;
   }
   
   .section.nav-secondary .default-content-wrapper ul {
@@ -256,31 +251,52 @@
   }
   
   .section.nav-secondary .default-content-wrapper ul li {
-    margin: 5px 0;
+    margin: 8px 0;
     width: 100%;
+    text-align: left;
   }
   
-  .section.nav-main .default-content-wrapper ul ul {
-    position: static;
-    box-shadow: none;
-    width: 100%;
+  .section.nav-secondary .default-content-wrapper ul li:last-child {
+    width: auto;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul {
+    flex-direction: column;
   }
   
   .section.nav-main .default-content-wrapper > ul > li {
-    width: 100%;
+    padding: 10px 0;
     border-bottom: 1px solid #eaeaea;
+    width: 100%;
   }
-}
-
-.section-nav-bar a {
-  color: #003366;
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 14px;
-  position: relative;
-}
-
-.section-nav-bar a:hover {
-  color: #b30838;
+  
+  /* Handle mobile dropdowns */
+  .section.nav-main .default-content-wrapper > ul > li > ul {
+    position: static;
+    box-shadow: none;
+    padding-left: 20px;
+    width: 100%;
+    min-width: auto;
+    border-top: 1px solid #eaeaea;
+    margin-top: 10px;
+  }
+  
+  /* Mobile dropdown toggle */
+  .section.nav-main .default-content-wrapper > ul > li > a {
+    display: block;
+    position: relative;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul > li > a:after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    display: block;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul > li:hover > a:after {
+    content: '-';
+  }
 }
