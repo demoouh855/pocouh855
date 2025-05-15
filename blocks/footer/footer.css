@@ -1,20 +1,118 @@
-footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
-}
-
-footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
-}
-
-footer .footer p {
-  margin: 0;
-}
-
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
-  }
-}
+/* General Footer Styles */  
+.footer-wrapper {  
+  background-color: #f8f8f8; /* Light grey background */  
+  padding: 40px 20px; /* Spacing around the footer */  
+  font-family: Arial, sans-serif;  
+  font-size: 14px;  
+  color: #002b45; /* Dark blue text */  
+}  
+  
+.footer {  
+  display: flex;  
+  justify-content: space-between;  
+  align-items: flex-start;  
+  max-width: 1200px; /* Ensure consistent width */  
+  margin: 0 auto; /* Center the footer content */  
+}  
+  
+/* Footer Logo Section */  
+.footer-brand {  
+  flex: 1; /* Take up equal space */  
+  max-width: 300px; /* Restrict the width of the logo section */  
+  padding-right: 20px; /* Add spacing to the right */  
+}  
+  
+.footer-brand picture img {  
+  max-width: 100%; /* Ensure image scales properly */  
+  height: auto;  
+}  
+  
+.social-info ul {  
+  list-style: none;  
+  padding: 0;  
+  margin-top: 10px;  
+  display: flex;  
+  gap: 10px; /* Spacing between social icons */  
+}  
+  
+.social-info ul li a {  
+  text-decoration: none;  
+  color: #002b45; /* Dark blue color for icons */  
+  font-size: 18px; /* Adjust size of icons */  
+}  
+  
+.social-info ul li a:hover {  
+  color: #a51c30; /* Red hover effect */  
+}  
+  
+/* Main Navigation Links */  
+.footer-main {  
+  flex: 2; /* Take up more space than the logo section */  
+  border-left: 1px solid #e0e0e0; /* Light grey border separator */  
+  padding-left: 20px; /* Add spacing to the left */  
+}  
+  
+.footer-main ul {  
+  list-style: none;  
+  padding: 0;  
+  margin: 0;  
+  display: flex;  
+  flex-wrap: wrap;  
+  gap: 10px; /* Spacing between items */  
+}  
+  
+.footer-main ul li {  
+  flex: 1 1 50%; /* Divide into two columns */  
+}  
+  
+.footer-main ul li a {  
+  text-decoration: none;  
+  color: #002b45;  
+  font-weight: 600;  
+}  
+  
+.footer-main ul li a:hover {  
+  color: #a51c30; /* Red hover effect */  
+}  
+  
+/* Copyright Section */  
+.section[data-section-status="loaded"] {  
+  margin-top: 20px;  
+  text-align: center;  
+}  
+  
+.section[data-section-status="loaded"] p {  
+  margin: 0;  
+}  
+  
+.section[data-section-status="loaded"] p a {  
+  text-decoration: none;  
+  color: #002b45;  
+}  
+  
+.section[data-section-status="loaded"] p a:hover {  
+  color: #a51c30; /* Red hover effect */  
+}  
+  
+/* Responsive Styles */  
+@media (max-width: 768px) {  
+  .footer {  
+    flex-direction: column;  
+    align-items: center;  
+  }  
+  
+  .footer-brand {  
+    padding-right: 0;  
+    margin-bottom: 20px; /* Add spacing below the logo section */  
+  }  
+  
+  .footer-main {  
+    border-left: none; /* Remove the border separator */  
+    padding-left: 0;  
+  }  
+  
+  .footer-main ul li {  
+    flex: 1 1 100%; /* Stack links vertically */  
+    text-align: center;  
+  }  
+}  
