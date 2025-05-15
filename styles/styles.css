@@ -289,7 +289,7 @@ main>.section:first-of-type {
 
   /* new main*/
   /* Styling for article-container and related-container */
-  .section.article-container {
+  .section.article {
     width: 63%;
     display: inline-block;
     /* Ensure elements can sit side-by-side */
@@ -299,7 +299,7 @@ main>.section:first-of-type {
     /* Ensure padding doesn't affect width */
   }
 
-  .section.related-container {
+  .section.related {
     width: calc(100% - 68%);
     /* Remaining width */
     display: inline-block;
@@ -319,7 +319,7 @@ main .section.highlight {
   padding: 40px 0;
 }
 
-main .section.feature-container {
+main .section.featured {
   background-color: var(--off-color);
   padding-top: 6.389rem;
   padding-bottom: 4.444rem;
