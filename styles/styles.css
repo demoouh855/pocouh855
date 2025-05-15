@@ -48,7 +48,7 @@
 --body-font-size-s: 14.3763px;
   /* nav height */
   --nav-height: auto;
-  /* from OUHealth*/
+  /* from OUHe*/
   	--primary-color: #003b5c;
 	--secondary-color: #2b2e35;
 	--click1-color: #a90533;
@@ -278,4 +278,59 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* new main*/
+/* Reset any custom inline coloring for actual use: */
+.section.article-container {
+  background-color: unset;
+}
+
+/* Desktop layout: side-by-side when both are present */
+@media (min-width: 900px) {
+  /* Target only the .article-container immediately followed by .related-container,
+     and apply flex to their parent (main)! */
+  .section.article-container + .section.related-container {
+    display: flex;
+    gap: 2rem;
+  }
+
+  /* Now set widths for each inside that flex context */
+  .section.article-container + .section.related-container,
+  .section.article-container + .section.related-container > .section.article-container {
+    width: 68%;
+    min-width: 0;
+  }
+  .section.article-container + .section.related-container {
+    flex: 0 1 68%;
+  }
+  .section.related-container {
+    flex: 1 1 32%;
+    min-width: 0;
+  }
+
+  /* If you sometimes have only one of them, fall back to full width */
+  .section.article-container:not(:has(+ .section.related-container)),
+  .section.related-container:not(:has(.section.article-container)) {
+    width: 100%;
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  .section.article-container,
+  .section.related-container {
+    width: 100% !important;
+    display: block !important;
+  }
+}
+
+/* Full width for the breadcrumb and feature containers always */
+.section.breadcrumb-container,
+.section.feature-container {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  box-sizing: border-box;
+  margin: 40px 0;
 }
