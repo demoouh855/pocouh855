@@ -31,6 +31,7 @@ Submit your deliverables in the following format:
 
 # Notes
 
-1. Refer to [aem.live](https://www.aem.live/) for any updates or detailed instructions regarding Adobe Experience Manager.
-2. Adhere to the component folder structure and naming conventions as defined in the boilerplate repository.
-3. Be mindful of Edge Delivery cache behavior, especially handling updates to frequently visited areas like the global header and navigation.
+1. Refer to [aem.live](https://www.aem.live/) for any updates or detailed instructions regarding Edge Delivery.
+2. Refer to [https://github.com/adobe/aem-boilerplate] for code examples
+3. Adhere to the component folder structure and naming conventions as defined in the boilerplate repository.
+4. Be mindful of Edge Delivery cache behavior, especially handling updates to frequently visited areas like the global header and navigation.

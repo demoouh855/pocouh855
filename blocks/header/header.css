@@ -12,11 +12,11 @@
 
 /* Nav wrapper */
 .nav-wrapper {
-  max-width: 1200px;
   margin: 0 auto;
   position: relative;
   display: flex;
   align-items: center;
+  padding: 0 15px;
 }
 
 /* Main navigation */
@@ -72,17 +72,12 @@
 
 /* Brand section */
 .section.nav-brand {
+  margin: 1.8em;
   padding: 10px 0;
   flex: 0 0 auto;
 }
-
-.section.nav-brand .default-content-wrapper p {
-  margin: 0;
-  padding: 0;
-}
-
 .section.nav-brand img {
-  max-height: 78px;
+  max-height: 50px; /* Reduced height to match second image */
   width: auto;
 }
 
@@ -351,5 +346,9 @@
   
   .section.nav-main .default-content-wrapper > ul > li:hover > a:after {
     content: '-';
+  }
+
+  .section.nav-brand img {
+    max-height: 45px;
   }
 }
