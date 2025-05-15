@@ -22,24 +22,13 @@ export default async function decorate(block) {
     // Adjust the selector if your links are inside a specific wrapper
     const contentWrapper = brandDiv.querySelector('.default-content-wrapper');
     if (contentWrapper) {
-      // Find all a's inside contentWrapper that are not already inside a <ul> or <ol>
-      const anchors = Array.from(contentWrapper.querySelectorAll('a:not(ul a):not(ol a)'));
-      if (anchors.length) {
-        const ul = document.createElement('ul');
-        anchors.forEach(a => {
-          const text = a.textContent.trim();
-          a.setAttribute('aria-label', `${text} link`);
-
-          // Remove anchor from its current location
-          a.parentNode.removeChild(a);
-
-          const li = document.createElement('li');
-          li.appendChild(a);
-          ul.appendChild(li);
-        });
-        // Appending the list to the contentWrapper, adjust as needed (replace or append)
-        contentWrapper.appendChild(ul);
-      }
+      const anchors = contentWrapper.querySelectorAll('a');
+      anchors.forEach(a => {
+        const text = a.textContent.trim();
+        a.setAttribute('aria-label', text);
+        const safeClass = text.replace(/\s+/g, '-').replace(/[^a-z\-]/g, '') + '-icon';
+        a.classList.add(safeClass);
+      });
     }
     fragment.replaceChild(brandDiv, sectionBrand);
   }
