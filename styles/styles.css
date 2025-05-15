@@ -16,52 +16,52 @@
   --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
 
 
-/* colors */
---text-color: #58595b;
---link-color: #003b5c;
---link-hover-color: Invalid input color;
---background-color: #ffffff;
---overlay-background-color: #eeeeee;
---highlight-background-color: #cccccc;
+  /* colors */
+  --text-color: #58595b;
+  --link-color: #003b5c;
+  --link-hover-color: Invalid input color;
+  --background-color: #ffffff;
+  --overlay-background-color: #eeeeee;
+  --highlight-background-color: #cccccc;
 
-/* fonts */
---heading-font-family: proxima-nova, sans-serif;
---body-font-family: proxima-nova, sans-serif;
---fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono", monospace;
+  /* fonts */
+  --heading-font-family: proxima-nova, sans-serif;
+  --body-font-family: proxima-nova, sans-serif;
+  --fixed-font-family: "Roboto Mono", menlo, consolas, "Liberation Mono", monospace;
 
-/* colors */
---text-color: #58595b;
---link-color: #003b5c;
---link-hover-color: Invalid input color;
---background-color: #ffffff;
---overlay-background-color: #eeeeee;
---highlight-background-color: #cccccc;
+  /* colors */
+  --text-color: #58595b;
+  --link-color: #003b5c;
+  --link-hover-color: Invalid input color;
+  --background-color: #ffffff;
+  --overlay-background-color: #eeeeee;
+  --highlight-background-color: #cccccc;
 
-/* sizes */
---heading-font-size-xxl: 50.7588px;
---heading-font-size-xl: 30.4583px;
---heading-font-size-l: 20.2548px;
---heading-font-size-m: 20.2548px;
---heading-font-size-s: 16.9196px;
---heading-font-size-xs: 15.2292px;
---body-font-size-m: 15.2292px;
---body-font-size-s: 14.3763px;
+  /* sizes */
+  --heading-font-size-xxl: 50.7588px;
+  --heading-font-size-xl: 30.4583px;
+  --heading-font-size-l: 20.2548px;
+  --heading-font-size-m: 20.2548px;
+  --heading-font-size-s: 16.9196px;
+  --heading-font-size-xs: 15.2292px;
+  --body-font-size-m: 15.2292px;
+  --body-font-size-s: 14.3763px;
   /* nav height */
   --nav-height: auto;
   /* from OUHe*/
-  	--primary-color: #003b5c;
-	--secondary-color: #2b2e35;
-	--click1-color: #a90533;
-	--click2-color: #7eddd3;
-	--tertiary-color: #f2c75c;
-	--quarternary-color:#7eddd3;
-	--white-color: #FFFFFF;
-	--black-color: #000000;
-	--text-color: #58595b;
-	--off-color: #f5f5f5;
-	--gray-color: #E7E7E7;
+  --primary-color: #003b5c;
+  --secondary-color: #2b2e35;
+  --click1-color: #a90533;
+  --click2-color: #7eddd3;
+  --tertiary-color: #f2c75c;
+  --quarternary-color: #7eddd3;
+  --white-color: #FFFFFF;
+  --black-color: #000000;
+  --text-color: #58595b;
+  --off-color: #f5f5f5;
+  --gray-color: #E7E7E7;
 
-  
+
 }
 
 /* fallback fonts */
@@ -77,7 +77,7 @@
   src: local('Arial');
 }
 
-@media (width >= 900px) {
+@media (width >=900px) {
   :root {
     /* body sizes */
     --body-font-size-m: 18px;
@@ -131,17 +131,34 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
+  font-weight: 300;
   line-height: 1.25;
   scroll-margin: 40px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 {
+  font-size: var(--heading-font-size-xxl);
+}
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+}
+
+h3 {
+  font-size: var(--heading-font-size-l);
+}
+
+h4 {
+  font-size: var(--heading-font-size-m);
+}
+
+h5 {
+  font-size: var(--heading-font-size-s);
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs);
+}
 
 p,
 dl,
@@ -166,7 +183,7 @@ pre {
   white-space: pre;
 }
 
-main > div {
+main>div {
   margin: 40px 16px;
 }
 
@@ -252,23 +269,45 @@ main img {
 }
 
 /* sections */
-main > .section {
+main>.section {
   margin: 40px 0;
 }
 
-main > .section > div {
-  max-width: 1200px;
+main>.section>div {
   margin: auto;
   padding: 0 24px;
 }
 
-main > .section:first-of-type {
+main>.section:first-of-type {
   margin-top: 0;
 }
 
-@media (width >= 900px) {
-  main > .section > div {
+@media (width >=900px) {
+  main>.section>div {
     padding: 0 32px;
+  }
+
+  /* new main*/
+  /* Styling for article-container and related-container */
+  .section.article-container {
+    width: 63%;
+    display: inline-block;
+    /* Ensure elements can sit side-by-side */
+    vertical-align: top;
+    /* Align elements properly */
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect width */
+  }
+
+  .section.related-container {
+    width: calc(100% - 68%);
+    /* Remaining width */
+    display: inline-block;
+    /* Ensure elements can sit side-by-side */
+    vertical-align: top;
+    /* Align elements properly */
+    box-sizing: border-box;
+    /* Ensure padding doesn't affect width */
   }
 }
 
@@ -280,57 +319,9 @@ main .section.highlight {
   padding: 40px 0;
 }
 
-/* new main*/
-/* Reset any custom inline coloring for actual use: */
-.section.article-container {
-  background-color: unset;
-}
-
-/* Desktop layout: side-by-side when both are present */
-@media (min-width: 900px) {
-  /* Target only the .article-container immediately followed by .related-container,
-     and apply flex to their parent (main)! */
-  .section.article-container + .section.related-container {
-    display: flex;
-    gap: 2rem;
-  }
-
-  /* Now set widths for each inside that flex context */
-  .section.article-container + .section.related-container,
-  .section.article-container + .section.related-container > .section.article-container {
-    width: 68%;
-    min-width: 0;
-  }
-  .section.article-container + .section.related-container {
-    flex: 0 1 68%;
-  }
-  .section.related-container {
-    flex: 1 1 32%;
-    min-width: 0;
-  }
-
-  /* If you sometimes have only one of them, fall back to full width */
-  .section.article-container:not(:has(+ .section.related-container)),
-  .section.related-container:not(:has(.section.article-container)) {
-    width: 100%;
-    display: block;
-  }
-}
-
-@media (max-width: 900px) {
-  .section.article-container,
-  .section.related-container {
-    width: 100% !important;
-    display: block !important;
-  }
-}
-
-/* Full width for the breadcrumb and feature containers always */
-.section.breadcrumb-container,
-.section.feature-container {
-  width: 100%;
-  max-width: 100%;
-  display: block;
-  box-sizing: border-box;
-  margin: 40px 0;
+main .section.feature-container {
+  background-color: var(--off-color);
+  padding-top: 6.389rem;
+  padding-bottom: 4.444rem;
+  margin-bottom: 5.556rem;
 }
