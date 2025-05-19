@@ -1,7 +1,7 @@
 /* Header wrapper */
 .header-wrapper {
   width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
   background-color: white;
 }
 
@@ -76,6 +76,7 @@
   padding: 10px 0;
   flex: 0 0 auto;
 }
+
 .section.nav-brand img {
   max-height: 50px; /* Reduced height to match second image */
   width: auto;
@@ -116,6 +117,19 @@
 
 .section.nav-secondary .default-content-wrapper ul li {
   margin-left: 20px;
+}
+
+.section.nav-secondary .default-content-wrapper ul li:last-child {
+  background-color: #b30838; /* OU Health red */
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.section.nav-secondary .default-content-wrapper ul li:last-child a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .section.nav-secondary .default-content-wrapper ul li a {
@@ -165,7 +179,7 @@
   top: 100%;
   left: 0;
   background-color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
   z-index: 100;
   min-width: 250px;
   flex-direction: column;
@@ -213,22 +227,8 @@
   height: 16px;
 }
 
-/* "Schedule Now" button */
-.section.nav-secondary .default-content-wrapper ul li:last-child {
-  background-color: #b30838; /* OU Health red */
-  padding: 8px 16px;
-  border-radius: 4px;
-}
-
-.section.nav-secondary .default-content-wrapper ul li:last-child a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
 /* Media queries for responsive design */
-@media (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 992px) {
   .nav-wrapper {
     padding: 0 15px;
     flex-wrap: wrap;
@@ -312,30 +312,13 @@
     flex-direction: column;
   }
   
-  .section.nav-main .default-content-wrapper > ul > li {
-    padding: 10px 0;
-    border-bottom: 1px solid #eaeaea;
-    width: 100%;
-  }
-  
-  /* Handle mobile dropdowns */
-  .section.nav-main .default-content-wrapper > ul > li > ul {
-    position: static;
-    box-shadow: none;
-    padding-left: 20px;
-    width: 100%;
-    min-width: auto;
-    border-top: 1px solid #eaeaea;
-    margin-top: 10px;
-  }
-  
   /* Mobile dropdown toggle */
   .section.nav-main .default-content-wrapper > ul > li > a {
     display: block;
     position: relative;
   }
   
-  .section.nav-main .default-content-wrapper > ul > li > a:after {
+  .section.nav-main .default-content-wrapper > ul > li > a::after {
     content: '+';
     position: absolute;
     right: 0;
@@ -344,11 +327,28 @@
     display: block;
   }
   
-  .section.nav-main .default-content-wrapper > ul > li:hover > a:after {
+  .section.nav-main .default-content-wrapper > ul > li:hover > a::after {
     content: '-';
   }
 
   .section.nav-brand img {
     max-height: 45px;
+  }
+  
+  /* Handle mobile dropdowns */
+  .section.nav-main .default-content-wrapper > ul > li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+    width: 100%;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul > li > ul {
+    position: static;
+    box-shadow: none;
+    padding-left: 20px;
+    width: 100%;
+    min-width: auto;
+    border-top: 1px solid #eaeaea;
+    margin-top: 10px;
   }
 }

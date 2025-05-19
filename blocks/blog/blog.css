@@ -2,11 +2,11 @@
 
 :root {
   --primary-red: #d30000;
-  --dark-gray: #333333;
+  --dark-gray: #333;
   --light-gray: #f5f5f5;
-  --border-gray: #dddddd;
-  --text-color: #333333;
-  --link-blue: #0066cc;
+  --border-gray: #ddd;
+  --text-color: #333;
+  --link-blue: #06c;
 }
 
 /* Main Blog Heading */
@@ -39,37 +39,12 @@
   flex: 1;
 }
 
-.blog-search-form input[type="text"] {
-  width: 100%;
-  height: 38px;
-  padding: 0 0.75rem;
-  border: 1px solid var(--border-gray);
-  border-radius: 0;
-  font-size: 0.875rem;
-  color: var(--text-color);
-}
-
-.blog-search-form button {
-  height: 38px;
-  padding: 0 1.25rem;
-  background-color: var(--primary-red);
-  color: white;
-  border: none;
-  font-size: 0.875rem;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.blog-search-form button:hover {
-  background-color: #b10000;
-}
-
-/* Filter Area */
 .blog-filters {
   display: flex;
   justify-content: flex-start;
   padding: 0.5rem 1rem;
   gap: 1.5rem;
+  margin-bottom: 0;
 }
 
 .filter-group {
@@ -100,6 +75,43 @@
   padding-right: 1.5rem;
 }
 
+.blog-search-form input[type="text"] {
+  width: 100%;
+  height: 38px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border-gray);
+  border-radius: 0;
+  font-size: 0.875rem;
+  color: var(--text-color);
+}
+
+.blog-search-form {
+  margin-bottom: 0.5rem;
+}
+
+.blog-search-form button,
+.show-more-btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.blog-search-form button {
+  height: 38px;
+  padding: 0 1.25rem;
+  background-color: var(--primary-red);
+  color: white;
+  border: none;
+  font-size: 0.875rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.blog-search-form button:hover {
+  background-color: #b10000;
+}
+
 /* Clear Filters */
 .clear-filters {
   text-align: right;
@@ -126,6 +138,7 @@
   grid-template-columns: repeat(3, 1fr); /* Force exactly 3 columns */
   gap: 1.25rem;
   margin: 1.5rem 0;
+  padding: 0;
 }
 
 /* No Results Message */
@@ -210,6 +223,15 @@
   display: block;
 }
 
+.blog-card-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.blog-card-link:hover {
+  text-decoration: underline;
+}
+
 .continue-reading {
   margin-top: auto;
   color: var(--primary-red);
@@ -239,7 +261,21 @@
   background-color: #b10000;
 }
 
+/* Exact OU Health colors */
+:root {
+  --primary-red: #d30000;
+  --dark-gray: #333;
+  --light-gray: #f5f5f5;
+  --border-gray: #e0e0e0;
+}
+
 /* Responsive Styles */
+@media (max-width: 992px) {
+  .blog-search-results {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
+  }
+}
+
 @media (max-width: 768px) {
   .block.blog > form {
     flex-direction: column;
@@ -257,51 +293,6 @@
   
   .filter-group select {
     width: 100%;
-  }
-}
-
-/* Additional styles to match exact OU Health design */
-.blog-search-results {
-  padding: 0;
-}
-
-.blog-card-link {
-  color: var(--text-color);
-  text-decoration: none;
-}
-
-.blog-card-link:hover {
-  text-decoration: underline;
-}
-
-/* Custom OU Health button style */
-.blog-search-form button,
-.show-more-btn {
-  border-radius: 0;
-  text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 0.025em;
-}
-
-/* Exact spacing to match OU Health design */
-.blog-search-form {
-  margin-bottom: 0.5rem;
-}
-
-.blog-filters {
-  margin-bottom: 0;
-}
-
-/* Exact OU Health colors */
-:root {
-  --primary-red: #d30000;
-  --dark-gray: #333333;
-  --light-gray: #f5f5f5;
-  --border-gray: #e0e0e0;
-}
-@media (max-width: 992px) {
-  .blog-search-results {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
   }
 }
 
