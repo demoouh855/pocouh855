@@ -29,7 +29,7 @@ export default async function decorate(block) {
       anchors.forEach((a) => {
         const text = a.textContent.trim();
         a.setAttribute('aria-label', text);
-        const safeClass = `${text.replace(/\s+/g, '-').replace(/[^a-z\-]/g, '')}-icon`;
+        const safeClass = `${text.replace(/\s+/g, '-').replace(/[^a-z-]/g, '')}-icon`;
         a.classList.add(safeClass);
       });
     }

@@ -11,7 +11,7 @@ function createCard(post) {
   // Handle missing image
   const image = post.image || '/path/to/placeholder-image.jpg';
   // Get category tag (or default to 'Blog')
-  const tag = post.tag || post.category || 'Blog';
+  // const tag = post.tag || post.category || 'Blog';
 
   // Format date nicely if available
   const date = post.lastModified
@@ -196,6 +196,7 @@ export default async function decorate(block) {
   clearButton.type = 'button';
   clearButton.textContent = '→ Clear Filters';
   clearButton.addEventListener('click', () => {
+    /* eslint-disable no-use-before-define */
     input.value = '';
     categorySelect.value = 'Select';
     archiveSelect.value = 'Select';

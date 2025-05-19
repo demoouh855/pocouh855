@@ -3,20 +3,11 @@ import { loadFragment } from '../fragment/fragment.js';
 
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
-function openOnKeydown(e) {
-  const focused = document.activeElement;
-  const isNavDrop = focused.className === 'nav-drop';
-  if (isNavDrop && (e.code === 'Enter' || e.code === 'Space')) {
-    const dropExpanded = focused.getAttribute('aria-expanded') === 'true';
-    toggleAllNavSections(focused.closest('.nav-main'));
-    focused.setAttribute('aria-expanded', dropExpanded ? 'false' : 'true');
-  }
-}
+// Place all function definitions before they're used
 
-function focusNavSection() {
-  document.activeElement.addEventListener('keydown', openOnKeydown);
-}
-
+/**
+ * Toggle all navigation sections
+ */
 function toggleAllNavSections(main, expanded = false) {
   main
     .querySelectorAll('.nav-main .default-content-wrapper > ul > li')
@@ -25,20 +16,30 @@ function toggleAllNavSections(main, expanded = false) {
     });
 }
 
-function closeOnFocusLost(e) {
-  const nav = e.currentTarget;
-  if (!nav.contains(e.relatedTarget)) {
+/**
+ * Handle closing navigation on escape key
+ */
+function closeOnEscape(e) {
+/* eslint-disable no-use-before-define */
+  if (e.code === 'Escape') {
+    const nav = document.getElementById('nav');
     const navMain = nav.querySelector('.nav-main');
     const navSectionExpanded = navMain.querySelector('[aria-expanded="true"]');
     if (navSectionExpanded && isDesktop.matches) {
-      toggleAllNavSections(navMain, false);
+      toggleAllNavSections(navMain);
+      navSectionExpanded.focus();
     } else if (!isDesktop.matches) {
-      toggleMenu(nav, navMain, false);
+      toggleMenu(nav, navMain);
+      nav.querySelector('button').focus();
     }
   }
 }
 
+/**
+ * Toggle menu state
+ */
 function toggleMenu(nav, navMain, forceExpanded = null) {
+/* eslint-disable no-use-before-define */
   const expanded = forceExpanded !== null
     ? !forceExpanded
     : nav.getAttribute('aria-expanded') === 'true';
@@ -78,17 +79,39 @@ function toggleMenu(nav, navMain, forceExpanded = null) {
   }
 }
 
-function closeOnEscape(e) {
-  if (e.code === 'Escape') {
-    const nav = document.getElementById('nav');
+/**
+ * Focus handling for navigation sections
+ */
+function focusNavSection() {
+/* eslint-disable no-use-before-define */
+  document.activeElement.addEventListener('keydown', openOnKeydown);
+}
+
+/**
+ * Handle keydown events for opening navigation
+ */
+function openOnKeydown(e) {
+  const focused = document.activeElement;
+  const isNavDrop = focused.className === 'nav-drop';
+  if (isNavDrop && (e.code === 'Enter' || e.code === 'Space')) {
+    const dropExpanded = focused.getAttribute('aria-expanded') === 'true';
+    toggleAllNavSections(focused.closest('.nav-main'));
+    focused.setAttribute('aria-expanded', dropExpanded ? 'false' : 'true');
+  }
+}
+
+/**
+ * Handle focus lost events for closing navigation
+ */
+function closeOnFocusLost(e) {
+  const nav = e.currentTarget;
+  if (!nav.contains(e.relatedTarget)) {
     const navMain = nav.querySelector('.nav-main');
     const navSectionExpanded = navMain.querySelector('[aria-expanded="true"]');
     if (navSectionExpanded && isDesktop.matches) {
-      toggleAllNavSections(navMain);
-      navSectionExpanded.focus();
+      toggleAllNavSections(navMain, false);
     } else if (!isDesktop.matches) {
-      toggleMenu(nav, navMain);
-      nav.querySelector('button').focus();
+      toggleMenu(nav, navMain, false);
     }
   }
 }
