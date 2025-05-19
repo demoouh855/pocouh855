@@ -4,10 +4,9 @@
  */
 
 /* Container styles */
-
-main > .section > div.hero-blog-wrapper{
-    --section-vertical-padding: 2.778em;
-    margin-top: calc(var(--section-vertical-padding) * .8);
+.hero-blog-container {
+  margin-top: 2.5em !important; /* Push the hero down specifically as requested */
+  margin-bottom: 2em;
 }
 
 /* Hero Blog main block */
@@ -43,84 +42,55 @@ main > .section > div.hero-blog-wrapper{
 }
 
 /* Content container (right side) */
-.hero-blog.block > div:last-child {
+.hero-blog.block > div:nth-child(2) {
   width: 40%;
   padding: 0;
 }
 
 /* Content wrapper */
-.hero-blog.block > div:last-child > div {
+.hero-blog.block > div:nth-child(2) > div {
   width: 100%;
 }
 
 /* Strong text (title) */
 .hero-blog.block p strong {
   display: block;
-  font-size: 1.75rem;
+  font-size: var(--heading-font-size-m);
   font-weight: 700;
-  color: #004b87; /* OU Health blue */
+  color: var(--primary-color);
   line-height: 1.2;
   margin: 0 0 0.625rem 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--heading-font-family);
 }
 
-/* Main paragraph text */
+/* Paragraphs */
 .hero-blog.block p {
-  font-size: 1rem;
+  font-size: var(--body-font-size-m);
   line-height: 1.5;
-  color: #333;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+  font-family: var(--body-font-family);
 }
 
-/* Date styling */
-.hero-blog.block p::after {
-  content: "";
-  display: block;
-  margin-top: 0.625rem;
-}
-
-/* Remove all line breaks */
-.hero-blog.block br {
-  display: none;
-}
-
-/* Extract and style "Posted On:" part */
-.hero-blog.block p {
-  position: relative;
-}
-
-.hero-blog.block p::first-line {
-  font-size: 0.875rem;
-  color: #666;
-  margin-bottom: 0.625rem;
-}
-
-/* Add the Continue Reading link */
-.hero-blog.block a {
+/* Continue Reading link */
+.hero-blog.block a.continue-reading {
   display: inline-flex;
   align-items: center;
-  font-size: 0.875rem;
+  font-size: var(--body-font-size-s);
   font-weight: 500;
-  color: var(--click1-color); /* OU Health crimson */
-  text-decoration: none;
-  margin-top: 0.75rem;
-}
-
-.hero-blog.block a::before {
-  content: '→';
-  margin-right: 0.5rem;
   color: var(--click1-color);
+  text-decoration: none;
+  position: relative;
+  padding-left: 1.5rem;
 }
 
-/* Additional styling for other article categories heading */
-.hero-blog-container + h2 {
-  text-align: center;
-  font-size: 1.25rem;
-  color: #333;
-  margin: 2rem 0;
-  font-weight: 500;
+/* Arrow before the Continue Reading text */
+.hero-blog.block a.continue-reading::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  font-size: 1rem;
+  color: var(--click1-color);
 }
 
 /* Responsive styling */
@@ -128,18 +98,18 @@ main > .section > div.hero-blog-wrapper{
   .hero-blog.block {
     flex-direction: column;
   }
-  
+
   .hero-blog.block > div:first-child,
-  .hero-blog.block > div:last-child {
+  .hero-blog.block > div:nth-child(2) {
     width: 100%;
   }
-  
+
   .hero-blog.block > div:first-child {
     margin-bottom: 1rem;
   }
-  
+
   .hero-blog.block p strong {
-    font-size: 1.5rem;
+    font-size: var(--heading-font-size-s);
     margin-top: 0.5rem;
   }
 }
