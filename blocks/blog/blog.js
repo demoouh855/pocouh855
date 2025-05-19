@@ -25,9 +25,6 @@ function createCard(post) {
 
   return `
     <div class="blog-card">
-      <div class="blog-card-tag-container">
-        <span class="blog-card-tag">${tag}</span>
-      </div>
       <img src="${image}" alt="${post.title}" class="blog-card-image">
       <div class="blog-card-content">
         <h3 class="blog-card-title">${title}</h3>

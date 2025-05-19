@@ -1,287 +1,312 @@
-/* 
- * Blog Block CSS for OU Health
- * Enhances the existing blog structure without replacing functionality
- */
+/* Blog Search and Results Styling for OU Health */
 
-/* Main blog heading */
-.blog h1,
-.blog h2.blog-title,
-h1.blog-title,
-.blog-container h1 {
-  color: #004b87; /* OU Health blue */
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  font-family: Georgia, "Times New Roman", serif;
+:root {
+  --primary-red: #d30000;
+  --dark-gray: #333333;
+  --light-gray: #f5f5f5;
+  --border-gray: #dddddd;
+  --text-color: #333333;
+  --link-blue: #0066cc;
 }
 
-/* Search and filters section */
-.blogs-section {
-  background-color: #f7f7f7;
-  padding: 2rem;
-  margin-bottom: 2.5rem;
-  border-radius: 4px;
+/* Main Blog Heading */
+.block.blog h1 {
+  font-size: 1.875rem;
+  color: var(--text-color);
+  margin: 1.25rem 0;
+  font-weight: 500;
+  font-family: Arial, sans-serif;
 }
 
-/* Search input */
-.blogs-section input[type="text"] {
+/* Search Area Styling */
+.block.blog > form,
+.block.blog > .blog-filters,
+.block.blog > .clear-filters {
+  background-color: var(--light-gray);
+  padding: 0 1rem;
+  margin: 0;
+}
+
+.block.blog > form {
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-field {
   flex: 1;
-  border: none;
-  border-bottom: 1px solid #ddd;
-  padding: 0.5rem 0;
-  margin-right: 0.5rem;
-  background: transparent;
-  outline: none;
-  width: 100%;
-  max-width: 300px;
 }
 
-/* Search button */
-.blogs-section button.search {
-  background-color: #ae0030;
+.blog-search-form input[type="text"] {
+  width: 100%;
+  height: 38px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border-gray);
+  border-radius: 0;
+  font-size: 0.875rem;
+  color: var(--text-color);
+}
+
+.blog-search-form button {
+  height: 38px;
+  padding: 0 1.25rem;
+  background-color: var(--primary-red);
   color: white;
   border: none;
-  padding: 0.5rem 1.5rem;
-  font-weight: 500;
+  font-size: 0.875rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  border-radius: 0;
+  font-weight: 500;
 }
 
-.blogs-section button.search:hover {
-  background-color: #8e0027;
+.blog-search-form button:hover {
+  background-color: #b10000;
 }
 
-/* Category and Archives section */
-.blogs-section .filter-row {
+/* Filter Area */
+.blog-filters {
   display: flex;
-  flex-wrap: wrap;
-  margin: 1.5rem 0;
+  justify-content: flex-start;
+  padding: 0.5rem 1rem;
   gap: 1.5rem;
 }
 
-/* Filter labels */
-.blogs-section .category-label,
-.blogs-section .archives-label {
-  color: #004b87;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+.filter-group {
+  min-width: 120px;
+}
+
+.filter-group label {
   display: block;
-}
-
-/* Select dropdowns */
-.blogs-section select {
-  width: 100%;
-  padding: 0.5rem 0;
-  border: none;
-  border-bottom: 1px solid #ddd;
-  background-color: transparent;
-  color: #333;
-  outline: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ae0030' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right center;
-  cursor: pointer;
-}
-
-/* Clear filters link */
-.blogs-section .clear-filters {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1rem;
-}
-
-.blogs-section .clear-filters a {
-  color: #ae0030;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
   font-size: 0.875rem;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
 }
 
-.blogs-section .clear-filters a::before {
-  content: "→";
-  margin-right: 0.25rem;
+.filter-group select {
+  border: 1px solid var(--border-gray);
+  height: 38px;
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  background-color: white;
+  min-width: 120px;
+  color: var(--text-color);
+  border-radius: 0;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6" viewBox="0 0 12 6"><path d="M0 0l6 6 6-6z" fill="%23333"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  padding-right: 1.5rem;
 }
 
-/* All Articles heading */
-h2.all-articles-title {
-  font-size: 1.75rem;
-  color: #333;
-  margin: 2rem 0 1.5rem;
-  font-family: Georgia, "Times New Roman", serif;
+/* Clear Filters */
+.clear-filters {
+  text-align: right;
+  padding: 0.5rem 1rem 1rem;
 }
 
-/* Articles container */
-.blog-articles-container {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 2rem;
-  margin-bottom: 2rem;
+.clear-filters button {
+  background: none;
+  border: none;
+  color: var(--primary-red);
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  text-align: right;
 }
 
-/* Individual blog card */
-.blog {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  padding-bottom: 1.5rem;
-}
-
-/* Blog tag */
-.blog .blog-tag {
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  background-color: #004b87;
-  color: white;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  border-radius: 3px;
-  text-transform: uppercase;
-  font-weight: 600;
-  z-index: 1;
-}
-
-/* Featured badge */
-.blog.featured::before {
-  content: "★";
-  position: absolute;
-  top: 0.75rem;
-  left: 0.75rem;
-  width: 2rem;
-  height: 2rem;
-  background-color: #ae0030;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1rem;
-  z-index: 1;
-}
-
-/* Blog image */
-.blog img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* Blog content */
-.blog h2,
-.blog h3,
-.blog h4 {
-  font-size: 1.25rem;
-  color: #004b87;
-  margin: 1rem 0 0.75rem;
-  font-weight: 600;
-}
-
-.blog a {
-  text-decoration: none;
-  color: #004b87;
-}
-
-.blog a:hover {
+.clear-filters button:hover {
   text-decoration: underline;
 }
 
-/* Blog description */
-.blog p {
-  font-size: 0.9375rem;
-  color: #333;
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
+/* Blog Search Results */
+.blog-search-results {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Force exactly 3 columns */
+  gap: 1.25rem;
+  margin: 1.5rem 0;
 }
 
-/* Continue Reading link */
-.blog a[href*="Continue"] {
-  color: #ae0030;
+/* No Results Message */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* Blog Card */
+.blog-card {
+  border: 1px solid var(--border-gray);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Blog Tag */
+.blog-card-tag-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.blog-card-tag {
+  background-color: var(--dark-gray);
+  color: white;
+  padding: 0.25rem 0.625rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* Blog Image */
+.blog-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Blog Content */
+.blog-card-content {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card-title {
+  font-size: 1.125rem;
+  margin: 0 0 0.75rem;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.blog-card-title a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.blog-card-title a:hover {
+  text-decoration: underline;
+}
+
+.blog-card-desc {
+  font-size: 0.875rem;
+  color: var(--text-color);
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.blog-card-date {
+  font-size: 0.75rem;
+  color: #777;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.continue-reading {
+  margin-top: auto;
+  color: var(--primary-red);
   text-decoration: none;
   font-size: 0.875rem;
-  display: inline-flex;
-  align-items: center;
+  font-weight: 500;
 }
 
-.blog a[href*="Continue"]::before {
-  content: "→";
-  margin-right: 0.25rem;
+.continue-reading:hover {
+  text-decoration: underline;
 }
 
-/* Blog date */
-.blog time,
-.blog .date {
-  font-size: 0.8125rem;
-  color: #666;
-  margin-top: 0.5rem;
-  display: block;
-}
-
-/* Show More button */
-.show-more {
-  display: block;
-  margin: 2rem auto;
-  background-color: #ae0030;
+/* Show More Button */
+.show-more-btn {
+  background-color: var(--primary-red);
   color: white;
   border: none;
-  padding: 0.75rem 2rem;
-  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  margin: 1.5rem auto;
+  display: block;
+  font-weight: 500;
 }
 
-.show-more:hover {
-  background-color: #8e0027;
+.show-more-btn:hover {
+  background-color: #b10000;
 }
 
-/* Pagination */
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 0;
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .block.blog > form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .blog-search-form button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  .blog-filters {
+    flex-direction: column;
+  }
+  
+  .filter-group select {
+    width: 100%;
+  }
 }
 
-.pagination a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border: 1px solid #ddd;
-  margin: 0 0.25rem;
-  color: #333;
+/* Additional styles to match exact OU Health design */
+.blog-search-results {
+  padding: 0;
+}
+
+.blog-card-link {
+  color: var(--text-color);
   text-decoration: none;
 }
 
-.pagination a.active {
-  background-color: #ae0030;
-  color: white;
-  border-color: #ae0030;
+.blog-card-link:hover {
+  text-decoration: underline;
 }
 
-.pagination .prev,
-.pagination .next {
-  width: auto;
-  padding: 0 0.5rem;
+/* Custom OU Health button style */
+.blog-search-form button,
+.show-more-btn {
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.025em;
 }
 
-/* Responsive adjustments */
-@media (min-width: 768px) {
-  .blog-articles-container {
-    grid-template-columns: repeat(2, 1fr);
+/* Exact spacing to match OU Health design */
+.blog-search-form {
+  margin-bottom: 0.5rem;
+}
+
+.blog-filters {
+  margin-bottom: 0;
+}
+
+/* Exact OU Health colors */
+:root {
+  --primary-red: #d30000;
+  --dark-gray: #333333;
+  --light-gray: #f5f5f5;
+  --border-gray: #e0e0e0;
+}
+@media (max-width: 992px) {
+  .blog-search-results {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
   }
-  
-  .blogs-section .filter-row {
-    gap: 2rem;
-  }
 }
 
-@media (min-width: 992px) {
-  .blog-articles-container {
-    grid-template-columns: repeat(3, 1fr);
+@media (max-width: 576px) {
+  .blog-search-results {
+    grid-template-columns: 1fr; /* 1 column on mobile */
   }
 }
