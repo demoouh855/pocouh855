@@ -8,7 +8,9 @@ import { loadFragment } from '../fragment/fragment.js';
 export default async function decorate(block) {
   // Load footer as fragment
   const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
+  const footerPath = footerMeta
+    ? new URL(footerMeta, window.location).pathname
+    : '/footer';
   const fragment = await loadFragment(footerPath);
 
   // Process sections
@@ -23,7 +25,7 @@ export default async function decorate(block) {
     const contentWrapper = brandDiv.querySelector('.default-content-wrapper');
     if (contentWrapper) {
       const anchors = contentWrapper.querySelectorAll('a');
-      anchors.forEach(a => {
+      anchors.forEach((a) => {
         const text = a.textContent.trim();
         a.setAttribute('aria-label', text);
         const safeClass = text.replace(/\s+/g, '-').replace(/[^a-z\-]/g, '') + '-icon';
@@ -33,13 +35,11 @@ export default async function decorate(block) {
     fragment.replaceChild(brandDiv, sectionBrand);
   }
 
-
   // Process main section
   const sectionMain = fragment.children[1];
   if (sectionMain) {
     const nav = document.createElement('nav');
     nav.className = sectionMain.className + ' footer-main';
-
     // Move all first-level children into the nav
     while (sectionMain.firstChild) {
       nav.appendChild(sectionMain.firstChild);
