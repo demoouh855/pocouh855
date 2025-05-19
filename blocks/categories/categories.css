@@ -1,83 +1,147 @@
-/**
- * Category Icons Block CSS for OU Health Blog
+/* 
+ * Categories Block CSS
+ * Styled to exactly match the second screenshot with icons to the side of text
  */
 
-/* Categories Section Container */
-.article-categories {
-  margin: 2rem 0;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid #eee;
-  text-align: center;
+/* Main container */
+.categories-container {
+  margin: 3rem 0;
+  padding: 0;
 }
 
-.article-categories h2 {
-  font-size: 1.25rem;
-  font-weight: 500;
+.categories-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+/* Title with horizontal lines */
+.categories .article-categories-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 2.5rem 0;
+  font-size: 1.75rem;
   color: #333;
-  margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-family: Georgia, "Times New Roman", serif; /* Serif font for the title */
   text-align: center;
 }
 
-/* Icons Grid */
-.category-icons {
+/* Horizontal lines on sides of the title */
+.categories .article-categories-title::before,
+.categories .article-categories-title::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: #75e1d2; /* Mint/aqua teal color */
+  margin: 0 1.5rem;
+}
+
+/* Container for icons */
+.categories .article-categories-icons {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 3rem; /* Space between category items */
+  margin: 0 auto 2.5rem;
+  max-width: 1200px;
+  padding: 0 1rem;
 }
 
-/* Individual Category Icon */
-.category-icon {
+/* Individual category link - horizontal layout */
+.categories .article-category {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   text-decoration: none;
-  color: #555;
-  transition: transform 0.2s ease;
+  padding: 0.5rem;
 }
 
-.category-icon:hover {
-  transform: translateY(-3px);
-}
-
-/* Icon Container */
-.category-icon .icon {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background-color: #f5f5f5;
+/* Icon container */
+.categories .article-category-icon {
+  margin-right: 0.75rem; /* Space between icon and text */
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 0.5rem;
-  color: #ae0030;
-  font-size: 1.5rem;
-  transition: background-color 0.2s ease;
+  align-items: center;
 }
 
-.category-icon:hover .icon {
-  background-color: #f0e0e3;
+/* Icon span styling */
+.categories .article-category-icon .icon {
+  width: 2.5em;
+  height: 2.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Category Name */
-.category-icon .text {
-  font-size: 0.875rem;
-  text-align: center;
+/* Icon images - make them OU Health red with outline style */
+.categories .article-category-icon img {
+  width: 2.5rem;
+  height: 2.5rem;
+  filter: brightness(0) saturate(100%) invert(21%) sepia(81%) saturate(2951%) hue-rotate(333deg) brightness(85%) contrast(88%);
+}
+
+/* Category text */
+.categories .article-category-text {
+  font-size: 1.125rem;
+  color: #004b87; /* OU Health blue */
+  font-weight: 400; /* Slightly lighter font weight */
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Bottom border line */
+.categories-container::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #75e1d2; /* Match the mint/aqua teal color */
+  margin-top: 0;
+  width: 100%;
 }
 
 /* Responsive adjustments */
+@media (max-width: 992px) {
+  .categories .article-categories-icons {
+    gap: 2rem;
+  }
+  
+  .categories .article-category-icon img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  .categories .article-category-text {
+    font-size: 1rem;
+  }
+}
+
 @media (max-width: 767px) {
-  .category-icons {
+  .categories-container {
+    margin: 2rem 0;
+  }
+  
+  .categories .article-categories-icons {
     gap: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
   }
   
-  .category-icon .icon {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1.25rem;
+  .categories .article-category {
+    width: 100%;
+    justify-content: flex-start;
   }
   
-  .category-icon .text {
-    font-size: 0.75rem;
+  .categories .article-category-text {
+    font-size: 1rem;
+  }
+  
+  .categories .article-categories-title {
+    font-size: 1.5rem;
+  }
+  
+  .categories .article-categories-title::before,
+  .categories .article-categories-title::after {
+    margin: 0 1rem;
   }
 }

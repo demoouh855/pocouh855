@@ -1,0 +1,145 @@
+/* 
+ * Hero Blog Block CSS for OU Health
+ * Exactly matching the screenshot layout
+ */
+
+/* Container styles */
+
+main > .section > div.hero-blog-wrapper{
+    --section-vertical-padding: 2.778em;
+    margin-top: calc(var(--section-vertical-padding) * .8);
+}
+
+/* Hero Blog main block */
+.hero-blog.block {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin: 0 0 2rem 0;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Image container (left side) */
+.hero-blog.block > div:first-child {
+  width: 60%;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+/* Image wrapper */
+.hero-blog.block > div:first-child > div {
+  width: 100%;
+}
+
+/* Image */
+.hero-blog.block > div:first-child img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content container (right side) */
+.hero-blog.block > div:last-child {
+  width: 55%;
+  padding: 0;
+}
+
+/* Content wrapper */
+.hero-blog.block > div:last-child > div {
+  width: 100%;
+}
+
+/* Strong text (title) */
+.hero-blog.block p strong {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #004b87; /* OU Health blue */
+  line-height: 1.2;
+  margin: 0 0 0.625rem 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Main paragraph text */
+.hero-blog.block p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #333;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Date styling */
+.hero-blog.block p::after {
+  content: "";
+  display: block;
+  margin-top: 0.625rem;
+}
+
+/* Remove all line breaks */
+.hero-blog.block br {
+  display: none;
+}
+
+/* Extract and style "Posted On:" part */
+.hero-blog.block p {
+  position: relative;
+}
+
+.hero-blog.block p::first-line {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.625rem;
+}
+
+/* Add the Continue Reading link */
+.hero-blog.block a {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ae0030; /* OU Health crimson */
+  text-decoration: none;
+  margin-top: 0.75rem;
+}
+
+.hero-blog.block a::before {
+  content: '→';
+  margin-right: 0.5rem;
+  color: #ae0030;
+}
+
+/* Additional styling for other article categories heading */
+.hero-blog-container + h2 {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #333;
+  margin: 2rem 0;
+  font-weight: 500;
+}
+
+/* Responsive styling */
+@media (max-width: 767px) {
+  .hero-blog.block {
+    flex-direction: column;
+  }
+  
+  .hero-blog.block > div:first-child,
+  .hero-blog.block > div:last-child {
+    width: 100%;
+  }
+  
+  .hero-blog.block > div:first-child {
+    margin-bottom: 1rem;
+  }
+  
+  .hero-blog.block p strong {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }
+}
