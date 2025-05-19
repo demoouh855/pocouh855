@@ -44,7 +44,7 @@ main > .section > div.hero-blog-wrapper{
 
 /* Content container (right side) */
 .hero-blog.block > div:last-child {
-  width: 55%;
+  width: 40%;
   padding: 0;
 }
 
