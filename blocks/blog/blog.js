@@ -16,10 +16,10 @@ function createCard(post) {
   // Format date nicely if available
   const date = post.lastModified
     ? new Date(post.lastModified).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      })
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    })
     : '';
 
   return `
@@ -27,8 +27,8 @@ function createCard(post) {
       <img src='${image}' alt='${post.title}' class='blog-card-image'>
       <div class='blog-card-content'>
         <h3 class='blog-card-title'>${title}</h3>
-        <p class='blog-card-desc'>${post.description || ""}</p>
-        ${date ? `<span class='blog-card-date'>${date}</span>` : ""}
+        <p class='blog-card-desc'>${post.description || ''}</p>
+        ${date ? `<span class='blog-card-date'>${date}</span>` : ''}
         <a href='${post.url}' class='continue-reading'>→ Continue Reading</a>
       </div>
     </div>
@@ -40,8 +40,7 @@ function renderResults(container, results, page, pageSize) {
   const end = start + pageSize;
 
   if (results.length === 0) {
-    container.innerHTML =
-      '<div class="no-results">No matching blog posts found. Please try a different search term.</div>';
+    container.innerHTML = '<div class="no-results">No matching blog posts found. Please try a different search term.</div>';
     return false;
   }
 
@@ -61,18 +60,16 @@ async function searchBlogs(query, category, archive) {
   // Filter by query if provided
   if (query) {
     list = list.filter(
-      (post) =>
-        (post.title || '').toLowerCase().includes(query.toLowerCase()) ||
-        (post.description || '').toLowerCase().includes(query.toLowerCase())
+      (post) => (post.title || '').toLowerCase().includes(query.toLowerCase())
+        || (post.description || '').toLowerCase().includes(query.toLowerCase()),
     );
   }
 
   // Filter by category if selected
   if (category && category !== 'Select') {
     list = list.filter(
-      (post) =>
-        (post.category || '').toLowerCase() === category.toLowerCase() ||
-        (post.tag || '').toLowerCase() === category.toLowerCase()
+      (post) => (post.category || '').toLowerCase() === category.toLowerCase()
+        || (post.tag || '').toLowerCase() === category.toLowerCase(),
     );
   }
 
@@ -87,10 +84,7 @@ async function searchBlogs(query, category, archive) {
   }
 
   // Sort by lastModified descending
-  list = list.sort((a, b) =>
-    (b.lastModified || '').localeCompare(a.lastModified || '')
-  );
-
+  list = list.sort((a, b) => (b.lastModified || '').localeCompare(a.lastModified || ''));
   return list;
 }
 
@@ -247,13 +241,13 @@ export default async function decorate(block) {
     allResults = await searchBlogs(
       currentQuery,
       currentCategory,
-      currentArchive
+      currentArchive,
     );
     const hasMore = renderResults(
       resultsDiv,
       allResults,
       currentPage,
-      pageSize
+      pageSize,
     );
     showMoreBtn.style.display = hasMore ? '' : 'none';
   };
@@ -275,7 +269,7 @@ export default async function decorate(block) {
       resultsDiv,
       allResults,
       currentPage,
-      pageSize
+      pageSize,
     );
     showMoreBtn.style.display = hasMore ? '' : 'none';
   });

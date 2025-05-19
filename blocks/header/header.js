@@ -3,34 +3,6 @@ import { loadFragment } from '../fragment/fragment.js';
 
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
-function closeOnEscape(e) {
-  if (e.code === 'Escape') {
-    const nav = document.getElementById('nav');
-    const navMain = nav.querySelector('.nav-main');
-    const navSectionExpanded = navMain.querySelector('[aria-expanded="true"]');
-    if (navSectionExpanded && isDesktop.matches) {
-      toggleAllNavSections(navMain);
-      navSectionExpanded.focus();
-    } else if (!isDesktop.matches) {
-      toggleMenu(nav, navMain);
-      nav.querySelector('button').focus();
-    }
-  }
-}
-
-function closeOnFocusLost(e) {
-  const nav = e.currentTarget;
-  if (!nav.contains(e.relatedTarget)) {
-    const navMain = nav.querySelector('.nav-main');
-    const navSectionExpanded = navMain.querySelector('[aria-expanded="true"]');
-    if (navSectionExpanded && isDesktop.matches) {
-      toggleAllNavSections(navMain, false);
-    } else if (!isDesktop.matches) {
-      toggleMenu(nav, navMain, false);
-    }
-  }
-}
-
 function openOnKeydown(e) {
   const focused = document.activeElement;
   const isNavDrop = focused.className === 'nav-drop';
@@ -46,50 +18,52 @@ function focusNavSection() {
 }
 
 function toggleAllNavSections(main, expanded = false) {
-  console.log('Toggling all nav sections:', { main, expanded });
   main
     .querySelectorAll('.nav-main .default-content-wrapper > ul > li')
     .forEach((section) => {
-      console.log(
-        'Setting aria-expanded for section:',
-        section,
-        'to',
-        expanded
-      );
       section.setAttribute('aria-expanded', expanded);
     });
 }
 
+function closeOnFocusLost(e) {
+  const nav = e.currentTarget;
+  if (!nav.contains(e.relatedTarget)) {
+    const navMain = nav.querySelector('.nav-main');
+    const navSectionExpanded = navMain.querySelector('[aria-expanded="true"]');
+    if (navSectionExpanded && isDesktop.matches) {
+      toggleAllNavSections(navMain, false);
+    } else if (!isDesktop.matches) {
+      toggleMenu(nav, navMain, false);
+    }
+  }
+}
+
 function toggleMenu(nav, navMain, forceExpanded = null) {
-  const expanded =
-    forceExpanded !== null
-      ? !forceExpanded
-      : nav.getAttribute('aria-expanded') === 'true';
-  console.log('Toggling menu:', { nav, navMain, expanded });
+  const expanded = forceExpanded !== null
+    ? !forceExpanded
+    : nav.getAttribute('aria-expanded') === 'true';
   const button = nav.querySelector('.nav-hamburger button');
   document.body.style.overflowY = expanded || isDesktop.matches ? '' : 'hidden';
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
   toggleAllNavSections(
     navMain,
-    expanded || isDesktop.matches ? 'false' : 'true'
+    expanded || isDesktop.matches ? 'false' : 'true',
   );
   button.setAttribute(
     'aria-label',
-    expanded ? 'Open navigation' : 'Close navigation'
+    expanded ? 'Open navigation' : 'Close navigation',
   );
 
   const navDrops = navMain.querySelectorAll('.nav-drop');
   if (isDesktop.matches) {
     navDrops.forEach((drop) => {
       if (!drop.hasAttribute('tabindex')) {
-        console.log('Adding tabindex and focus listener to nav-drop:', drop);
         drop.setAttribute('tabindex', 0);
         drop.addEventListener('focus', focusNavSection);
       }
     });
   } else {
     navDrops.forEach((drop) => {
-      console.log('Removing tabindex and focus listener from nav-drop:', drop);
       drop.removeAttribute('tabindex');
       drop.removeEventListener('focus', focusNavSection);
     });
@@ -101,6 +75,21 @@ function toggleMenu(nav, navMain, forceExpanded = null) {
   } else {
     window.removeEventListener('keydown', closeOnEscape);
     nav.removeEventListener('focusout', closeOnFocusLost);
+  }
+}
+
+function closeOnEscape(e) {
+  if (e.code === 'Escape') {
+    const nav = document.getElementById('nav');
+    const navMain = nav.querySelector('.nav-main');
+    const navSectionExpanded = navMain.querySelector('[aria-expanded="true"]');
+    if (navSectionExpanded && isDesktop.matches) {
+      toggleAllNavSections(navMain);
+      navSectionExpanded.focus();
+    } else if (!isDesktop.matches) {
+      toggleMenu(nav, navMain);
+      nav.querySelector('button').focus();
+    }
   }
 }
 

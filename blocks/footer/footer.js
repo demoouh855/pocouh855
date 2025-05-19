@@ -17,10 +17,11 @@ export default async function decorate(block) {
   const sectionBrand = fragment.children[0];
   if (sectionBrand) {
     const brandDiv = document.createElement('div');
-    brandDiv.className = sectionBrand.className + ' footer-brand social-info';
+    brandDiv.className = `${sectionBrand.className} footer-brand social-info`;
     brandDiv.innerHTML = sectionBrand.innerHTML;
 
-    // Select only anchor tags that are direct children of the wrapper you want, and not already in a list
+    // Select only anchor tags that are direct children of the wrapper you want,
+    // and not already in a list
     // Adjust the selector if your links are inside a specific wrapper
     const contentWrapper = brandDiv.querySelector('.default-content-wrapper');
     if (contentWrapper) {
@@ -28,7 +29,7 @@ export default async function decorate(block) {
       anchors.forEach((a) => {
         const text = a.textContent.trim();
         a.setAttribute('aria-label', text);
-        const safeClass = text.replace(/\s+/g, '-').replace(/[^a-z\-]/g, '') + '-icon';
+        const safeClass = `${text.replace(/\s+/g, '-').replace(/[^a-z\-]/g, '')}-icon`;
         a.classList.add(safeClass);
       });
     }
@@ -39,7 +40,7 @@ export default async function decorate(block) {
   const sectionMain = fragment.children[1];
   if (sectionMain) {
     const nav = document.createElement('nav');
-    nav.className = sectionMain.className + ' footer-main';
+    nav.className = `${sectionMain.className} footer-main`;
     // Move all first-level children into the nav
     while (sectionMain.firstChild) {
       nav.appendChild(sectionMain.firstChild);
