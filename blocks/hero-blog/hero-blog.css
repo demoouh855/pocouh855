@@ -103,7 +103,7 @@ main > .section > div.hero-blog-wrapper{
   align-items: center;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #ae0030; /* OU Health crimson */
+  color: var(--click1-color); /* OU Health crimson */
   text-decoration: none;
   margin-top: 0.75rem;
 }
@@ -111,7 +111,7 @@ main > .section > div.hero-blog-wrapper{
 .hero-blog.block a::before {
   content: '→';
   margin-right: 0.5rem;
-  color: #ae0030;
+  color: var(--click1-color);
 }
 
 /* Additional styling for other article categories heading */

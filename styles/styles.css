@@ -19,10 +19,24 @@
   /* colors */
   --text-color: #58595b;
   --link-color: #003b5c;
-  --link-hover-color: invalid;
+  --link-hover-color: #58595c;
   --background-color: #fff;
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
+    /* from OUHe */
+  --primary-color: #003b5c;
+  --secondary-color: #2b2e35;
+  --click1-color: #a90533;
+  --click2-color: #7eddd3;
+  --tertiary-color: #f2c75c;
+  --quarternary-color: #7eddd3;
+  --white-color: #fff;
+  --black-color: #000;
+  --off-color: #f5f5f5;
+  --gray-color: #E7E7E7;
+  --dark-gray: #333;
+  --border-gray: #e0e0e0;
+}
 
   /* sizes */
   --heading-font-size-xxl: 50.7588px;
@@ -37,18 +51,7 @@
   /* nav height */
   --nav-height: auto;
   
-  /* from OUHe */
-  --primary-color: #003b5c;
-  --secondary-color: #2b2e35;
-  --click1-color: #a90533;
-  --click2-color: #7eddd3;
-  --tertiary-color: #f2c75c;
-  --quarternary-color: #7eddd3;
-  --white-color: #fff;
-  --black-color: #000;
-  --off-color: #f5f5f5;
-  --gray-color: #E7E7E7;
-}
+
 
 /* fallback fonts */
 @font-face {

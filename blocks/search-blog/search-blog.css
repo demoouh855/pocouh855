@@ -1,16 +1,5 @@
-/* Blog Search and Results Styling for OU Health */
-
-:root {
-  --primary-red: #d30000;
-  --dark-gray: #333;
-  --light-gray: #f5f5f5;
-  --border-gray: #e0e0e0;
-  --text-color: #333;
-  --link-blue: #06c;
-}
-
 /* Main Blog Heading */
-.block.blog h1 {
+.block.search-blogh1 {
   font-size: 1.875rem;
   color: var(--text-color);
   margin: 1.25rem 0;
@@ -19,15 +8,15 @@
 }
 
 /* Search Area Styling */
-.block.blog > form,
-.block.blog > .blog-filters,
-.block.blog > .clear-filters {
-  background-color: var(--light-gray);
+.block.search-blog> form,
+.block.search-blog> .blog-filters,
+.block.search-blog> .clear-filters {
+  background-color: var(--off-color);
   padding: 0 1rem;
   margin: 0;
 }
 
-.block.blog > form {
+.block.search-blog> form {
   padding-top: 1rem;
   padding-bottom: 0.5rem;
   display: flex;
@@ -100,7 +89,7 @@
 .blog-search-form button {
   height: 38px;
   padding: 0 1.25rem;
-  background-color: var(--primary-red);
+  background-color: var(--click1-color);
   color: white;
   border: none;
   font-size: 0.875rem;
@@ -109,7 +98,7 @@
 }
 
 .blog-search-form button:hover {
-  background-color: #b10000;
+  background-color: var(--click1-color);
 }
 
 /* Clear Filters */
@@ -121,7 +110,7 @@
 .clear-filters button {
   background: none;
   border: none;
-  color: var(--primary-red);
+  color: var(--click1-color);
   font-size: 0.875rem;
   cursor: pointer;
   padding: 0;
@@ -234,7 +223,7 @@
 
 .continue-reading {
   margin-top: auto;
-  color: var(--primary-red);
+  color: var(--click1-color);
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 500;
@@ -246,7 +235,7 @@
 
 /* Show More Button */
 .show-more-btn {
-  background-color: var(--primary-red);
+  background-color: var(--click1-color);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -258,7 +247,7 @@
 }
 
 .show-more-btn:hover {
-  background-color: #b10000;
+  background-color: var(--click1-color);
 }
 
 /* Exact OU Health colors */
@@ -271,7 +260,7 @@
 }
 
 @media (max-width: 768px) {
-  .block.blog > form {
+  .block.search-blog> form {
     flex-direction: column;
     align-items: stretch;
   }
