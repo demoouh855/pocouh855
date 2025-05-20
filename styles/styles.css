@@ -36,22 +36,20 @@
   --gray-color: #E7E7E7;
   --dark-gray: #333;
   --border-gray: #e0e0e0;
+
+    /* sizes */
+    --heading-font-size-xxl: 50.7588px;
+    --heading-font-size-xl: 30.4583px;
+    --heading-font-size-l: 20.2548px;
+    --heading-font-size-m: 20.2548px;
+    --heading-font-size-s: 16.9196px;
+    --heading-font-size-xs: 15.2292px;
+    --body-font-size-m: 15.2292px;
+    --body-font-size-s: 14.3763px;
+    
+    /* nav height */
+    --nav-height: auto;
 }
-
-  /* sizes */
-  --heading-font-size-xxl: 50.7588px;
-  --heading-font-size-xl: 30.4583px;
-  --heading-font-size-l: 20.2548px;
-  --heading-font-size-m: 20.2548px;
-  --heading-font-size-s: 16.9196px;
-  --heading-font-size-xs: 15.2292px;
-  --body-font-size-m: 15.2292px;
-  --body-font-size-s: 14.3763px;
-  
-  /* nav height */
-  --nav-height: auto;
-  
-
 
 /* fallback fonts */
 @font-face {
@@ -436,4 +434,39 @@ main .section.featured .cards-card-image::before {
   justify-content: center;
   font-size: 1.5rem;
   z-index: 1;
+}
+
+/* Value Panel Styling */
+.section.value-panel {
+  background-color: var(--click1-color); /* Burgundy/maroon background color */
+  color: white;
+  text-align: left;
+  padding: 24px 0;
+}
+
+.section.value-panel .default-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section.value-panel p {
+  width: 40%;
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (width < 900px) {
+  .section.value-panel p {
+    font-size: 2rem;
+  }
+}
+
+@media (width >= 900px) {
+  .section.value-panel .default-content-wrapper {
+    padding: 1.4em 3.333em 1.4em 7.978rem;
+  }
 }
