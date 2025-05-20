@@ -1,3 +1,4 @@
+/* Base columns styling */
 .columns > div {
   display: flex;
   flex-direction: column;
@@ -19,6 +20,7 @@
   display: block;
 }
 
+/* Desktop columns layout */
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
@@ -32,72 +34,97 @@
   }
 }
 
-/* Content Zone variant styling - with constrained width */
-.columns-container .columns.content-zone {
+/* Common variant styling for constrained width */
+.columns-container .columns.content-zone,
+.columns-container .columns.career-zone {
   max-width: 80vw;
   margin: 0 auto;
 }
 
-.columns.content-zone > div {
+/* Common alignment for zone variants */
+.columns.content-zone > div,
+.columns.career-zone > div {
   align-items: flex-start; /* Align items at the top */
 }
 
-.columns.content-zone > div > div:first-child {
-  /* Main content styling */
-  padding-right: 20px;
+/* Common heading styles */
+.columns.content-zone h1,
+.columns.career-zone h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+  font-weight: 500;
+  line-height: 1.2;
+  font-family: var(--heading-font-family);
 }
 
-.columns.content-zone > div > div:last-child {
-  /* Sidebar styling */
-  background-color: #f5f5f5;
+.columns.content-zone h1 {
+  font-size: var(--heading-font-size-xl);
+  margin-bottom: 1.5rem;
 }
 
+.columns.career-zone h3 {
+  font-size: var(--heading-font-size-l);
+  margin-bottom: 1.2rem;
+}
+
+/* Common paragraph styles */
+.columns.content-zone > div > div:first-child p,
+.columns.career-zone p {
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  font-family: var(--body-font-family);
+}
+
+/* Common link styles */
+.columns.content-zone > div > div:first-child a,
+.columns.career-zone a:not(.button) {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.columns.content-zone > div > div:first-child a:hover,
+.columns.career-zone a:not(.button):hover {
+  text-decoration: underline;
+  color: var(--link-hover-color);
+}
+
+/* Desktop layout adjustments for variants */
 @media (width >= 900px) {
-  .columns.content-zone > div {
+  .columns.content-zone > div,
+  .columns.career-zone > div {
     gap: 40px;
   }
   
+  /* Content zone specific ratio */
   .columns.content-zone > div > div:first-child {
     flex: 7; /* 70% width */
+    padding-right: 20px;
   }
   
   .columns.content-zone > div > div:last-child {
     flex: 3; /* 30% width */
   }
+  
+  /* Career zone specific ratio - equal columns */
+  .columns.career-zone > div > div {
+    flex: 1;
+    padding: 0 20px;
+  }
 }
 
-/* Content area styling */
-.columns.content-zone h1 {
-  color: #00395e; /* Dark blue color for the heading */
-  font-size: 2.5rem;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
+/* Content zone specific styling */
+.columns.content-zone > div > div:last-child {
+  background-color: var(--off-color);
 }
 
-.columns.content-zone > div > div:first-child p {
-  color: #333;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
-}
-
-.columns.content-zone > div > div:first-child a {
-  color: #00395e;
-  text-decoration: none;
-}
-
-.columns.content-zone > div > div:first-child a:hover {
-  text-decoration: underline;
-}
-
-/* Sidebar styling */
 .columns.content-zone > div > div:last-child h3 {
-  background-color: #00395e; /* Dark blue background */
+  background-color: var(--primary-color);
   padding: 20px 30px;
-  color: white;
+  color: var(--white-color);
   margin: 0;
-  font-size: 1.5rem;
+  font-size: var(--heading-font-size-s);
   font-weight: 500;
 }
 
@@ -109,10 +136,10 @@
 
 .columns.content-zone > div > div:last-child ul li {
   padding: 12px 0;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border-gray);
   position: relative;
   padding-left: 30px;
-  color: #00395e;
+  color: var(--primary-color);
   font-weight: 500;
 }
 
@@ -120,27 +147,82 @@
   border-bottom: none;
 }
 
-/* Add arrow icons to the list items */
+/* Add arrow icons to the content-zone list items */
 .columns.content-zone > div > div:last-child ul li::before {
   content: "→";
-  color: #9C1C32; /* Burgundy color for arrows */
+  color: var(--click1-color);
   position: absolute;
   left: 0;
   font-weight: bold;
 }
 
+/* Career zone specific styling */
+.columns-container .columns.career-zone {
+  padding: 40px 0;
+  position: relative;
+}
+
+/* Add a divider line at the bottom of career zone */
+.columns-container .columns.career-zone::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background-color: var(--border-gray);
+}
+
+/* Button styling for career zone */
+.columns.career-zone .button-container {
+  margin-top: 1.5rem;
+}
+
+.columns.career-zone a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  background: none;
+  color: var(--text-color);
+  border: none;
+  padding: 0;
+  font-weight: 500;
+  font-size: var(--body-font-size-m);
+  text-decoration: none;
+  position: relative;
+  margin-right: 30px;
+  margin-bottom: 15px;
+  font-family: var(--body-font-family);
+}
+
+/* Arrow for buttons */
+.columns.career-zone a.button::before {
+  content: "→";
+  margin-right: 8px;
+  font-weight: bold;
+  color: var(--click1-color);
+}
+
+.columns.career-zone a.button:hover {
+  text-decoration: underline;
+  background: none;
+}
+
 /* Responsive adjustments */
 @media (max-width: 899px) {
-  .columns-container .columns.content-zone {
+  /* Common mobile adjustments */
+  .columns-container .columns.content-zone,
+  .columns-container .columns.career-zone {
     max-width: 90vw; /* Slightly wider on mobile */
   }
   
-  .columns.content-zone > div {
+  .columns.content-zone > div,
+  .columns.career-zone > div {
     display: block; /* Override flex for mobile */
   }
   
+  /* Content zone mobile adjustments */
   .columns.content-zone h1 {
-    font-size: 2rem;
+    font-size: var(--heading-font-size-l);
   }
   
   .columns.content-zone > div > div:first-child {
@@ -151,26 +233,57 @@
     margin-top: 30px;
     width: 100%; /* Full width sidebar on mobile */
   }
+  
+  /* Career zone mobile adjustments */
+  .columns-container .columns.career-zone {
+    padding: 30px 0;
+  }
+  
+  .columns.career-zone > div > div {
+    margin-bottom: 40px;
+    padding: 0;
+  }
+  
+  .columns.career-zone > div > div:last-child {
+    margin-bottom: 0;
+  }
+  
+  .columns.career-zone h3 {
+    font-size: var(--heading-font-size-m);
+  }
 }
 
 /* For really small screens */
 @media (max-width: 480px) {
-  .columns-container .columns.content-zone {
+  .columns-container .columns.content-zone,
+  .columns-container .columns.career-zone {
     max-width: 95vw; /* Almost full width on very small screens */
+  }
+  
+  .columns-container .columns.content-zone {
     padding-left: 10px;
     padding-right: 10px;
   }
   
   .columns.content-zone h1 {
-    font-size: 1.75rem;
+    font-size: var(--heading-font-size-s);
   }
   
   .columns.content-zone > div > div:last-child h3 {
-    font-size: 1.25rem;
+    font-size: var(--heading-font-size-xs);
     padding: 15px 20px;
   }
   
   .columns.content-zone > div > div:last-child ul {
     padding: 15px 20px;
+  }
+  
+  .columns.career-zone h3 {
+    font-size: var(--heading-font-size-s);
+  }
+  
+  .columns.career-zone a.button {
+    display: block;
+    margin-bottom: 15px;
   }
 }
