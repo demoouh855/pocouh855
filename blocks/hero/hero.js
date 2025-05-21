@@ -44,12 +44,12 @@ export default function decorate(block) {
           const picture = pictures[0];
           imageContainer.appendChild(picture.cloneNode(true));
 
-          // Mark any img inside as eager loading
+          // Mark any img inside with high priority and eager loading for LCP optimization
           const imgInPicture = imageContainer.querySelector('img');
-          if (variant === 'news') {
-            imgInPicture.loading = 'lazy';
-          } else {
+          if (imgInPicture) {
             imgInPicture.loading = 'eager';
+            imgInPicture.fetchPriority = 'high';
+            imgInPicture.decoding = 'async';
           }
 
           // Remove this picture from the cell to avoid duplication
@@ -57,8 +57,14 @@ export default function decorate(block) {
           foundMainImage = true;
         } else if (imgs.length > 0) {
           const img = imgs[0];
-          img.loading = 'eager';
-          imageContainer.appendChild(img.cloneNode(true));
+          const imgClone = img.cloneNode(true);
+
+          // Set high priority loading for LCP optimization
+          imgClone.loading = 'eager';
+          imgClone.fetchPriority = 'high';
+          imgClone.decoding = 'async';
+
+          imageContainer.appendChild(imgClone);
 
           // Remove this img from the cell to avoid duplication
           img.remove();
