@@ -16,7 +16,12 @@
   margin-right: auto;
   color: var(--background-color);
 }
-
+.hero.home h1{
+  color: var(--primary-color);
+}
+.hero.home h1 strong{
+  color: var(--click1-color);
+}
 .hero picture,
 .hero .hero-image-container {
   position: absolute;

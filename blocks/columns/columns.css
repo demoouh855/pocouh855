@@ -207,6 +207,79 @@
   background: none;
 }
 
+/* NEW: CTA Panel styling for the home page icons and links */
+.columns.cta-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+  background-color: var(--white-color);
+}
+
+.columns.cta-panel > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+}
+
+.columns.cta-panel > div > div {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  padding: 20px 10px;
+}
+
+/* Add dividers between the columns */
+.columns.cta-panel > div > div:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  bottom: 20%;
+  width: 1px;
+  background-color: var(--border-gray);
+}
+
+/* Style for the icon and text */
+.columns.cta-panel p {
+  display: flex;
+  flex-direction: row; /* Changed from column to row */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style for icons */
+.columns.cta-panel .icon {
+  display: inline-flex;
+  margin-right: 1.0em;
+  margin-bottom: 15px;
+  height: auto;
+  width: auto;
+}
+
+.columns.cta-panel .icon img {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) saturate(100%) invert(14%) sepia(78%) saturate(3766%) hue-rotate(334deg) brightness(94%) contrast(97%);
+}
+
+/* Make icon containers clickable */
+.columns.cta-panel > div > div {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.columns.cta-panel > div > div:hover {
+  transform: translateY(-5px);
+}
+
+/* For when icons are links */
+.columns.cta-panel a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 /* Responsive adjustments */
 @media (max-width: 899px) {
   /* Common mobile adjustments */
@@ -251,6 +324,25 @@
   .columns.career-zone h3 {
     font-size: var(--heading-font-size-m);
   }
+  
+  /* CTA Panel mobile adjustments */
+  .columns.cta-panel > div {
+    flex-direction: row; /* Keep horizontal on tablet */
+    flex-wrap: wrap;
+  }
+  
+  .columns.cta-panel > div > div {
+    padding: 15px 10px;
+  }
+  
+  .columns.cta-panel p {
+    font-size: 1.1rem;
+  }
+  
+  .columns.cta-panel .icon img {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 /* For really small screens */
@@ -285,5 +377,33 @@
   .columns.career-zone a.button {
     display: block;
     margin-bottom: 15px;
+  }
+  
+  /* CTA Panel small screen adjustments */
+  .columns.cta-panel > div {
+    flex-direction: column; /* Stack on very small screens */
+  }
+  
+  .columns.cta-panel > div > div {
+    width: 100%;
+    padding: 20px 0;
+  }
+  
+  .columns.cta-panel > div > div:not(:last-child)::after {
+    right: 0;
+    bottom: 0;
+    top: auto;
+    left: 20%;
+    width: 60%;
+    height: 1px;
+  }
+  
+  .columns.cta-panel p {
+    font-size: 1rem;
+  }
+  
+  .columns.cta-panel .icon img {
+    width: 30px;
+    height: 30px;
   }
 }
