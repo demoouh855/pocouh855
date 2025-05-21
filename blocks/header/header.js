@@ -257,5 +257,5 @@ export default async function decorate(block) {
   }
 
   // Add cleanup on page unload to prevent memory leaks
-  window.addEventListener('unload', cleanupNavEvents);
+  window.addEventListener('pagehide', cleanupNavEvents);
 }
