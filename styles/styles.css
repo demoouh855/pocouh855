@@ -37,18 +37,18 @@
   --dark-gray: #333;
   --border-gray: #e0e0e0;
 
-    /* sizes */
-    --heading-font-size-xxl: 50.7588px;
-    --heading-font-size-xl: 30.4583px;
-    --heading-font-size-l: 20.2548px;
-    --heading-font-size-m: 20.2548px;
-    --heading-font-size-s: 16.9196px;
-    --heading-font-size-xs: 15.2292px;
-    --body-font-size-m: 15.2292px;
-    --body-font-size-s: 14.3763px;
-    
-    /* nav height */
-    --nav-height: auto;
+  /* sizes */
+  --heading-font-size-xxl: 50.7588px;
+  --heading-font-size-xl: 30.4583px;
+  --heading-font-size-l: 20.2548px;
+  --heading-font-size-m: 20.2548px;
+  --heading-font-size-s: 16.9196px;
+  --heading-font-size-xs: 15.2292px;
+  --body-font-size-m: 15.2292px;
+  --body-font-size-s: 14.3763px;
+
+  /* nav height */
+  --nav-height: auto;
 }
 
 /* fallback fonts */

@@ -1,9 +1,21 @@
+/* eslint-disable no-use-before-define */
 import { getMetadata } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
 
 const isDesktop = window.matchMedia('(min-width: 900px)');
 
 // Place all function definitions before they're used
+
+/**
+ * Clean up event listeners to prevent memory leaks
+ */
+function cleanupNavEvents() {
+  window.removeEventListener('keydown', closeOnEscape);
+  const nav = document.getElementById('nav');
+  if (nav) {
+    nav.removeEventListener('focusout', closeOnFocusLost);
+  }
+}
 
 /**
  * Toggle all navigation sections
@@ -37,46 +49,60 @@ function closeOnEscape(e) {
 
 /**
  * Toggle menu state
+ * FIXED: Fixed multiple issues with this function
  */
 function toggleMenu(nav, navMain, forceExpanded = null) {
 /* eslint-disable no-use-before-define */
+  // Determine if we should expand or collapse
   const expanded = forceExpanded !== null
-    ? !forceExpanded
+    ? forceExpanded
     : nav.getAttribute('aria-expanded') === 'true';
-  const button = nav.querySelector('.nav-hamburger button');
-  document.body.style.overflowY = expanded || isDesktop.matches ? '' : 'hidden';
-  nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  toggleAllNavSections(
-    navMain,
-    expanded || isDesktop.matches ? 'false' : 'true',
-  );
-  button.setAttribute(
-    'aria-label',
-    expanded ? 'Open navigation' : 'Close navigation',
-  );
 
-  const navDrops = navMain.querySelectorAll('.nav-drop');
-  if (isDesktop.matches) {
-    navDrops.forEach((drop) => {
-      if (!drop.hasAttribute('tabindex')) {
-        drop.setAttribute('tabindex', 0);
-        drop.addEventListener('focus', focusNavSection);
-      }
-    });
-  } else {
-    navDrops.forEach((drop) => {
-      drop.removeAttribute('tabindex');
-      drop.removeEventListener('focus', focusNavSection);
-    });
-  }
+  // Use requestAnimationFrame for smoother UI updates
+  requestAnimationFrame(() => {
+    const button = nav.querySelector('.nav-hamburger button');
 
-  if (!expanded || isDesktop.matches) {
-    window.addEventListener('keydown', closeOnEscape);
-    nav.addEventListener('focusout', closeOnFocusLost);
-  } else {
-    window.removeEventListener('keydown', closeOnEscape);
-    nav.removeEventListener('focusout', closeOnFocusLost);
-  }
+    // FIXED: Properly toggle body overflow
+    document.body.style.overflowY = !expanded && !isDesktop.matches ? 'hidden' : '';
+
+    // Set correct aria-expanded state
+    nav.setAttribute('aria-expanded', !expanded ? 'true' : 'false');
+
+    // Toggle sections with correct expanded state
+    toggleAllNavSections(
+      navMain,
+      !expanded && !isDesktop.matches ? 'true' : 'false',
+    );
+
+    button.setAttribute(
+      'aria-label',
+      expanded ? 'Open navigation' : 'Close navigation',
+    );
+
+    const navDrops = navMain.querySelectorAll('.nav-drop');
+    if (isDesktop.matches) {
+      navDrops.forEach((drop) => {
+        if (!drop.hasAttribute('tabindex')) {
+          drop.setAttribute('tabindex', 0);
+          drop.addEventListener('focus', focusNavSection);
+        }
+      });
+    } else {
+      navDrops.forEach((drop) => {
+        drop.removeAttribute('tabindex');
+        drop.removeEventListener('focus', focusNavSection);
+      });
+    }
+
+    // Clean up old listeners first
+    cleanupNavEvents();
+
+    // Only add event listeners when menu is open or on desktop
+    if (!expanded || isDesktop.matches) {
+      window.addEventListener('keydown', closeOnEscape);
+      nav.addEventListener('focusout', closeOnFocusLost);
+    }
+  });
 }
 
 /**
@@ -191,20 +217,45 @@ export default async function decorate(block) {
   hamburger.addEventListener('click', () => toggleMenu(nav, navMain));
   nav.prepend(hamburger);
 
-  // Initialize dropdown menus
-  const navDrops = navMain.querySelectorAll('.nav-drop');
-  navDrops.forEach((drop) => {
-    drop.setAttribute('aria-expanded', 'false'); // Set default state
-    drop.addEventListener('click', () => {
-      const isExpanded = drop.getAttribute('aria-expanded') === 'true';
-      toggleAllNavSections(navMain, false); // Close all other dropdowns
-      drop.setAttribute('aria-expanded', isExpanded ? 'false' : 'true'); // Toggle current dropdown
+  // NEW: Add mobile toggle buttons for submenus
+  if (navMain) {
+    const menuItems = navMain.querySelectorAll('.default-content-wrapper > ul > li');
+    menuItems.forEach((item) => {
+      const submenu = item.querySelector('ul');
+
+      // Only add toggle for items with submenus
+      if (submenu) {
+        item.setAttribute('aria-expanded', 'false');
+
+        // Create the toggle button
+        const toggleBtn = document.createElement('span');
+        toggleBtn.className = 'mobile-toggle';
+        item.appendChild(toggleBtn);
+
+        // Add click event to toggle button
+        toggleBtn.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const isExpanded = item.getAttribute('aria-expanded') === 'true';
+          item.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+        });
+      }
     });
-  });
+  }
 
   // Wrap the nav in a nav-wrapper and append to the block
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';
   navWrapper.append(nav);
   block.append(navWrapper);
+
+  // FIXED: Set correct initial state
+  if (!isDesktop.matches) {
+    nav.setAttribute('aria-expanded', 'false');
+    document.body.style.overflowY = '';
+  }
+
+  // Add cleanup on page unload to prevent memory leaks
+  window.addEventListener('unload', cleanupNavEvents);
 }
