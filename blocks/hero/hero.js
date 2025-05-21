@@ -46,7 +46,9 @@ export default function decorate(block) {
 
           // Mark any img inside as eager loading
           const imgInPicture = imageContainer.querySelector('img');
-          if (imgInPicture) {
+          if (variant === 'news') {
+            imgInPicture.loading = 'lazy';
+          } else {
             imgInPicture.loading = 'eager';
           }
 
