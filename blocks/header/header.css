@@ -141,7 +141,7 @@
   text-decoration: underline;
 }
 
-/* Main navigation menu */
+/* Main navigation menu with updated even spacing */
 .section.nav-main {
   padding: 0;
   width: 100%;
@@ -152,12 +152,15 @@
   list-style: none;
   margin: 0;
   padding: 0;
-  justify-content: space-between;
+  justify-content: space-evenly; /* Changed from space-between to space-evenly */
+  width: 100%;
 }
 
 .section.nav-main .default-content-wrapper > ul > li {
   position: relative;
-  padding: 15px 20px 15px 0;
+  padding: 15px 10px; /* Equal padding on both sides */
+  text-align: center; /* Center the text */
+  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .section.nav-main .default-content-wrapper > ul > li > a {
@@ -170,6 +173,13 @@
 
 .section.nav-main .default-content-wrapper > ul > li:hover > a {
   color: var(--click1-color); /* OU Health red */
+}
+
+/* Adjust the search icon list item to not take up too much space */
+.section.nav-main .default-content-wrapper > ul > li:last-child {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: auto; /* Push to the right */
 }
 
 /* FIXED: Dropdown menus */
@@ -261,6 +271,31 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+  
+  .section.nav-main .default-content-wrapper > ul > li {
+    padding: 15px 5px; /* Reduce padding on tablets */
+  }
+  
+  .section.nav-main .default-content-wrapper > ul > li > a {
+    font-size: 14px; /* Slightly smaller font on tablets */
+  }
+}
+
+/* Desktop layout for main nav */
+@media (width >= 900px) {
+  .section.nav-main .default-content-wrapper ul {
+    justify-content: space-evenly;
+  }
+  
+  .section.nav-main .default-content-wrapper > ul > li {
+    flex: 1 1 auto; /* Allow items to grow but maintain even spacing */
+    max-width: none; /* Remove any max-width constraints */
+  }
+  
+  /* Make sure search icon doesn't grow too much */
+  .section.nav-main .default-content-wrapper > ul > li:last-child {
+    flex: 0 0 auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -282,7 +317,7 @@
     padding-left: .2em;
   }
   
-  /* NEW: Add transitions for mobile menu */
+  /* Mobile transitions for menu */
   .nav-content {
     transition: opacity 0.3s ease, visibility 0.3s ease, max-height 0.4s ease;
     opacity: 0;
@@ -322,12 +357,12 @@
     flex-direction: column;
   }
   
-  /* UPDATED: Mobile navigation with separate toggle */
   .section.nav-main .default-content-wrapper > ul > li {
     position: relative;
     padding: 0;
     border-bottom: 1px solid var(--border-gray);
     width: 100%;
+    text-align: left;
   }
   
   /* UPDATED: Main link style for mobile */
@@ -338,7 +373,7 @@
     position: relative;
   }
   
-  /* NEW: Mobile toggle button */
+  /* Mobile toggle button */
   .mobile-toggle {
     position: absolute;
     right: 0;
@@ -393,5 +428,11 @@
   /* Only show submenu when explicitly expanded */
   .section.nav-main .default-content-wrapper > ul > li[aria-expanded="true"] > ul {
     display: block;
+  }
+  
+  /* Reset specific mobile overrides */
+  .section.nav-main .default-content-wrapper > ul > li:last-child {
+    margin-left: 0;
+    padding: 10px 0;
   }
 }
