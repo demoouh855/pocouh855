@@ -1,15 +1,13 @@
 /* 
  * Hero Blog Block CSS for OU Health
- * Optimized for 100 PageSpeed score with accessibility enhancements
+ * Exactly matching the screenshot layout
  */
 
 /* Container styles */
-.hero-blog-container {
-  margin-top: 2.5em !important; /* Push the hero down specifically as requested */
-  margin-bottom: 2em;
-  /* Add aspect ratio to prevent layout shift */
-  aspect-ratio: 16/9;
-  display: block;
+
+main > .section > div.hero-blog-wrapper{
+    --section-vertical-padding: 2.778em;
+    margin-top: calc(var(--section-vertical-padding) * .8);
 }
 
 /* Hero Blog main block */
@@ -22,13 +20,6 @@
   border: none;
   box-shadow: none;
   padding: 0;
-  /* Add content-visibility to improve render performance */
-  content-visibility: auto;
-  /* Focus outline for accessibility */
-  &:focus-within {
-    outline: 2px solid var(--focus-color, #0078d4);
-    outline-offset: 2px;
-  }
 }
 
 /* Image container (left side) */
@@ -36,119 +27,119 @@
   width: 60%;
   flex-shrink: 0;
   margin: 0;
-  /* Set explicit dimensions to prevent layout shift */
-  position: relative;
-  aspect-ratio: 16/9;
 }
 
 /* Image wrapper */
 .hero-blog.block > div:first-child > div {
   width: 100%;
-  height: 100%;
 }
 
 /* Image */
 .hero-blog.block > div:first-child img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
   display: block;
-  /* Add important properties for LCP optimization */
-  will-change: auto;
-  /* This ensures the critical LCP image gets proper priority */
 }
 
 /* Content container (right side) */
-.hero-blog.block > div:nth-child(2) {
+.hero-blog.block > div:last-child {
   width: 40%;
   padding: 0;
 }
 
 /* Content wrapper */
-.hero-blog.block > div:nth-child(2) > div {
+.hero-blog.block > div:last-child > div {
   width: 100%;
 }
 
 /* Strong text (title) */
 .hero-blog.block p strong {
   display: block;
-  font-size: var(--heading-font-size-m);
+  font-size: 1.75rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: #004b87; /* OU Health blue */
   line-height: 1.2;
   margin: 0 0 0.625rem 0;
-  font-family: var(--heading-font-family);
-  /* Improve readability */
-  max-width: 60ch;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Paragraphs */
+/* Main paragraph text */
 .hero-blog.block p {
-  font-size: var(--body-font-size-m);
+  font-size: 1rem;
   line-height: 1.5;
-  color: var(--text-color);
-  margin: 0 0 1rem 0;
-  font-family: var(--body-font-family);
-  /* Improve readability */
-  max-width: 65ch;
+  color: #333;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Continue Reading link */
-.hero-blog.block a.continue-reading {
+/* Date styling */
+.hero-blog.block p::after {
+  content: "";
+  display: block;
+  margin-top: 0.625rem;
+}
+
+/* Remove all line breaks */
+.hero-blog.block br {
+  display: none;
+}
+
+/* Extract and style "Posted On:" part */
+.hero-blog.block p {
+  position: relative;
+}
+
+.hero-blog.block p::first-line {
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.625rem;
+}
+
+/* Add the Continue Reading link */
+.hero-blog.block a {
   display: inline-flex;
   align-items: center;
-  font-size: var(--body-font-size-s);
+  font-size: 0.875rem;
   font-weight: 500;
-  color: var(--click1-color);
+  color: var(--click1-color); /* OU Health crimson */
   text-decoration: none;
-  position: relative;
-  padding-left: 1.5rem;
-  /* Accessibility enhancements */
-  transition: color 0.2s ease, text-decoration 0.2s ease;
-  line-height: 1.5;
-  /* Improved focus state */
-  &:focus {
-    outline: 2px solid var(--focus-color, #0078d4);
-    outline-offset: 2px;
-  }
-  /* Improved hover state */
-  &:hover {
-    text-decoration: underline;
-    color: var(--click1-hover-color, #00619a);
-  }
+  margin-top: 0.75rem;
 }
 
-/* Arrow before the Continue Reading text */
-.hero-blog.block a.continue-reading::before {
+.hero-blog.block a::before {
   content: '→';
-  position: absolute;
-  left: 0;
-  font-size: 1rem;
+  margin-right: 0.5rem;
   color: var(--click1-color);
 }
 
-/* Responsive styling - optimized to prevent layout shifts */
+/* Additional styling for other article categories heading */
+.hero-blog-container + h2 {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #333;
+  margin: 2rem 0;
+  font-weight: 500;
+}
+
+/* Responsive styling */
 @media (max-width: 767px) {
   .hero-blog.block {
     flex-direction: column;
   }
-
-  .hero-blog-container {
-    aspect-ratio: auto;
-  }
-
+  
   .hero-blog.block > div:first-child,
-  .hero-blog.block > div:nth-child(2) {
+  .hero-blog.block > div:last-child {
     width: 100%;
   }
-
+  
   .hero-blog.block > div:first-child {
     margin-bottom: 1rem;
-    aspect-ratio: 4/3; /* Better mobile aspect ratio */
   }
-
+  
   .hero-blog.block p strong {
-    font-size: var(--heading-font-size-s);
+    font-size: 1.5rem;
     margin-top: 0.5rem;
   }
 }
