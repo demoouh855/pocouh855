@@ -160,7 +160,6 @@
   position: relative;
   padding: 15px 10px; /* Equal padding on both sides */
   text-align: center; /* Center the text */
-  white-space: nowrap; /* Prevent text wrapping */
 }
 
 .section.nav-main .default-content-wrapper > ul > li > a {
@@ -215,7 +214,6 @@
   text-decoration: none;
   display: block;
   padding: 10px 15px;
-  white-space: nowrap;
   font-size: 14px;
 }
 
