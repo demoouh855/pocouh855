@@ -49,7 +49,7 @@
 
 /* Common heading styles */
 .columns.content-zone h1,
-.columns.career-zone h3 {
+.columns.career-zone h2 {
   color: var(--primary-color);
   margin-top: 0;
   font-weight: 500;
@@ -62,7 +62,7 @@
   margin-bottom: 1.5rem;
 }
 
-.columns.career-zone h3 {
+.columns.career-zone h2 {
   font-size: var(--heading-font-size-l);
   margin-bottom: 1.2rem;
 }
