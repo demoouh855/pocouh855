@@ -80,14 +80,14 @@
 /* Common link styles */
 .columns.content-zone > div > div:first-child a,
 .columns.career-zone a:not(.button) {
-  color: var(--link-color);
+  color: var(--primary-color);
   text-decoration: none;
 }
 
 .columns.content-zone > div > div:first-child a:hover,
 .columns.career-zone a:not(.button):hover {
   text-decoration: underline;
-  color: var(--link-hover-color);
+  color: var(--click1-color);
 }
 
 /* Desktop layout adjustments for variants */
