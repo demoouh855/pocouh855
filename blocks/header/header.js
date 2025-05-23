@@ -187,8 +187,8 @@ export default async function decorate(block) {
       // If not already in a link, wrap image in anchor
       const link = document.createElement('a');
       link.href = '/'; // Set as needed or pull from a config/text cell
-      image.removeAttribute('width');
-      image.removeAttribute('height');
+      image.setAttribute('width', '162');
+      image.setAttribute('height', '50'); 
       link.appendChild(image.cloneNode(true)); // Copy image with alt text
       navBrand.innerHTML = '';
       navBrand.appendChild(link);
