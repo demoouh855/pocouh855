@@ -250,6 +250,17 @@
     text-align: center;
     padding: 15px 0;
   }
+  .section.nav-brand a {
+    display: inline-block;
+    width: 162px;
+    height: 50px;
+  }
+  .section.nav-brand a img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain; 
+  }
   
   .nav-content {
     flex: 0 0 100%;
