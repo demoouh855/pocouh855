@@ -1,2 +1,6 @@
+# mountpoints:
+#  /: https://drive.google.com/drive/u/1/folders/1GKg8HaxEZW34UBIRl__tBoWElNgnS3gT
 mountpoints:
-  /: https://drive.google.com/drive/u/1/folders/1GKg8HaxEZW34UBIRl__tBoWElNgnS3gT
+  /:
+    url: https://content.da.live/demoouh855/pocouh855/
+    type: markup
